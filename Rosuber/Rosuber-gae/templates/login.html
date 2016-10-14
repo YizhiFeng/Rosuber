@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <title>Rosuber</title>
+
+  <!-- Font Awesome has a bunch of handy icons that are easy to use (optional) -->
+  <!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"> -->
+  
+  <!-- Import Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Parisienne" rel="stylesheet">
+
+  <!-- Material Design Lite -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.brown-red.min.css" />
+  <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/static/css/style.css">
+
+  <!-- Note many developers load js last. I like to cheat and put little script snippets in my html sometimes,
+       so I load my JS in the header and use the $(document).ready() jQuery approach for any running JS code. -->
+
+  <!-- Bootstrap and jQuery JS -->
+  <script src="/static/js/jquery-2.2.3.min.js"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
+  
+  <!-- MDL -->
+  <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+  
+
+  <!-- Custom JS -->
+  <script src="/static/js/main.js"></script>
+  <script src="/static/js/rosefire.js"></script>
+
+  <style>
+  	h1 {
+  	font-family: 'Parisienne', cursive;
+  	font-weight: bold;
+  	font-size: 135px;
+  	text-align: center;
+	}
+	
+	#login-btn {
+		position: absolute;
+		left: 670px;
+	}
+  </style>
+
+</head>
+
+<body>
+	<div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet">
+	<h1>Rosuber</h1>
+
+	<button id="login-btn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+ 	 Login With Rosefire
+	</button>
+	</div>
+
+</body>
+
+</html>

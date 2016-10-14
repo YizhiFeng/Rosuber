@@ -1,7 +1,14 @@
+import json
 import os
 
+from google.appengine.api import users
 import jinja2
 import webapp2
+
+from handlers.base_handlers import BaseHandler
+from rosefire import RosefireTokenVerifier
+import utils
+
 
 # Jinja environment instance necessary to use Jinja templates.
 def __init_jinja_env():
@@ -14,18 +21,61 @@ def __init_jinja_env():
     return jenv
 
 jinja_env = __init_jinja_env()
+ROSEFIRE_SECRET = 'omf1cPaSTlhPOTItFIAb'
+
+class HomePage(BaseHandler):
+    
+#     def update_values(self, email, values):
+#         # Subclasses should override this method to add additional data for the Jinja template.
+#         
+
+    def get_template(self):
+        return "templates/homepage.html"
+
+    def get_page_title(self):
+        return "Rosuber"
 
 
-class MainHandler(webapp2.RequestHandler):
+class LoginPage(BaseHandler):
     def get(self):
         # A basic template could just send text out the response stream, but we use Jinja
         # self.response.write("Hello world!")
-        
-        template = jinja_env.get_template("templates/base_page.html")
-        values = {"title": "Hello, world!"}
+        user= users.get_current_user()
+        values = {}
+        if user or "user_info" in self.session:
+            self.redirect("/homepage")
+            return
+        template = jinja_env.get_template("templates/login.html")
+        values = {"login_url":users.create_login_url("/homepage")}
         self.response.out.write(template.render(values))
-    
+
+
+class LoginHandler(BaseHandler):
+    def get(self):
+        if "user_info" not in self.session:
+            token = self.request.get('token')
+            auth_data = RosefireTokenVerifier(ROSEFIRE_SECRET).verify(token)
+            user_info = {"name": auth_data.name,
+                         "username": auth_data.username,
+                         "email": auth_data.email,
+                         "role": auth_data.group}
+            self.session["user_info"] = json.dumps(user_info)
+        self.redirect(uri="/homepage")
+
+class LogoutHandler(BaseHandler):
+    def get(self):
+        del self.session["user_info"]
+        self.redirect(uri="/")
+
+config = {}
+config['webapp2_extras.sessions'] = {
+    # This key is used to encrypt your sessions
+    'secret_key': 'somethingsupertopsecret',
+}
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
-], debug=True)
+    ('/', LoginPage),
+    ('/homepage', HomePage),
+    ('/rosefire-login', LoginHandler),
+    ('/rosefire-logout', LogoutHandler),
+], config=config, debug=True)

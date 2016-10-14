@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <title>Rosuber</title>
+
+  <!-- Font Awesome has a bunch of handy icons that are easy to use (optional) -->
+  <!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"> -->
+  
+  <!-- Import Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Parisienne" rel="stylesheet">
+
+  <!-- Material Design Lite -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.brown-red.min.css" />
+  <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+  <!-- Note many developers load js last. I like to cheat and put little script snippets in my html sometimes,
+       so I load my JS in the header and use the $(document).ready() jQuery approach for any running JS code. -->
+
+  <!-- Bootstrap and jQuery JS -->
+  <script src="/static/js/jquery-2.2.3.min.js"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
+  
+  <!-- Custom JS -->
+  <script src="/static/js/main.js"></script>
+  <script src="/static/js/rosefire.js"></script>
+  
+  
+  
+  <style>
+  body {
+  color: white;
+  background-color: #b50939;
+ }	
+  </style>
+  
+</head>
+  
+<body>
+	<div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet">
+	
+	{% block header %}
+	<!-- Always shows a header, even in smaller screens. -->
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+	  <header class="mdl-layout__header">
+	    <div class="mdl-layout__header-row">
+	      <!-- Title -->
+	      <span class="mdl-layout-title">Rosuber</span>
+	      <!-- Add spacer, to align navigation to the right -->
+	      <div class="mdl-layout-spacer"></div>
+	      <!-- Right aligned menu below button -->
+		  <button id="demo-menu-lower-right"
+			        class="mdl-button mdl-js-button mdl-button--icon">
+		  <i class="material-icons">more_vert</i>
+		  </button>
+			
+		  <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+			    for="demo-menu-lower-right">
+			<li class="mdl-menu__item">MyTrip</li>
+			<li id="logout-btn" class="mdl-menu__item">Logout
+				<div class="hidden logout-url">{{ logout_url }}</div>
+			</li>
+		  </ul>
+	    </div>
+	  </header>
+	  {% endblock %}
+    </div>
+
+</body>
+
+</html>
