@@ -40,9 +40,8 @@ class LoginPage(BaseHandler):
     def get(self):
         # A basic template could just send text out the response stream, but we use Jinja
         # self.response.write("Hello world!")
-        user= users.get_current_user()
         values = {}
-        if user or "user_info" in self.session:
+        if "user_info" in self.session:
             self.redirect("/homepage")
             return
         template = jinja_env.get_template("templates/login.html")
@@ -60,7 +59,7 @@ class LoginHandler(BaseHandler):
                          "email": auth_data.email,
                          "role": auth_data.group}
             self.session["user_info"] = json.dumps(user_info)
-        self.redirect(uri="/homepage")
+        self.redirect(uri="/")
 
 class LogoutHandler(BaseHandler):
     def get(self):
