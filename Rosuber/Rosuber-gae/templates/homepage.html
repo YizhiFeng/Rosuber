@@ -14,7 +14,7 @@
 
   <!-- Material Design Lite -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.brown-red.min.css" />
+  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.grey-red.min.css" />
   <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 
   <!-- Note many developers load js last. I like to cheat and put little script snippets in my html sometimes,
@@ -58,13 +58,15 @@
 			
 		  <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
 			    for="demo-menu-lower-right">
-			<li class="mdl-menu__item">MyTrip</li>
+			<li id="profile-btn" class="mdl-menu__item">Profile</li>
+			<li id="change-role-btn" class="mdl-menu__item">Change Your Role</li>
 			<li id="logout-btn" class="mdl-menu__item">Logout
 				<div class="hidden logout-url">{{ logout_url }}</div>
 			</li>
 		  </ul>
 	    </div>
-	  </header>
+	   </header>
+	  </div>
 	  {% endblock %}
 
 </body>

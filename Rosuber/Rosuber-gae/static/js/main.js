@@ -31,7 +31,7 @@ rh.rb.enableButtons = function() {
     window.location.replace(logoutUrl);
   });
   
-  
+    
 };
 
 
