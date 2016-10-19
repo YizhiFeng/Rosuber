@@ -26,10 +26,19 @@ rh.rb.enableButtons = function() {
    	});
    });
    
-    $("#logout-btn").click(function() {
+   $("#logout-btn").click(function() {
+	   document.querySelector('#logout-confirm-dialog').showModal();
+   });
+   
+    $("#signout-btn").click(function() {
     window.location.replace("/rosefire-logout");
   });
-  	
+    
+ // Cancel button on the delete confirmation dialog.
+	$('.close-logout-confirm-dialog').click(function() {
+		document.querySelector('#logout-confirm-dialog').close();
+	});
+ 
 };
 
 
