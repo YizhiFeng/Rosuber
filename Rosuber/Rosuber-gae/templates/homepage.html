@@ -10,11 +10,11 @@
   <!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"> -->
   
   <!-- Import Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Parisienne" rel="stylesheet">
+
 
   <!-- Material Design Lite -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.grey-red.min.css" />
+  <!--link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"-->
+  <!--link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.grey-red.min.css" -->
   <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 
   <!-- Material Design Bootstrap -->
@@ -45,35 +45,35 @@
 </head>
   
 <body>
-	
-	{% block header %}
-	<!-- Always shows a header, even in smaller screens. -->
-	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-	  <header class="mdl-layout__header">
-	    <div class="mdl-layout__header-row">
-	      <!-- Title -->
-	      <span class="mdl-layout-title">Rosuber</span>
-	      <!-- Add spacer, to align navigation to the right -->
-	      <div class="mdl-layout-spacer"></div>
-	      <!-- Right aligned menu below button -->
-		  <button id="demo-menu-lower-right"
-			        class="mdl-button mdl-js-button mdl-button--icon">
-		  <i class="material-icons">more_vert</i>
-		  </button>
-			
-		  <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-			    for="demo-menu-lower-right">
-			<li id="profile-btn" class="mdl-menu__item">Profile</li>
-			<li id="change-role-btn" class="mdl-menu__item">Change Your Role</li>
-			<li id="logout-btn" class="mdl-menu__item">Logout
-				<div class="hidden logout-url">{{ logout_url }}</div>
-			</li>
-		  </ul>
-	    </div>
-	   </header>
-	  </div>
-	  {% endblock %}
-	
+	  
+  <div class="container-fluid">
+  	
+	<nav class="navbar navbar-fixed-top scrolling-navbar navbar-dark rgba-grey-light">
+	  
+		<!--Collapse content-->
+        <div class="collapse navbar-toggleable-xs" id="collapseEx2">
+       		<div class = "navbar-header">
+        		<a class="navbar-brand" href="#">Navbar</a>
+        	</div>
+			<ul class="nav navbar-nav pull-right">
+				
+		            <li class="nav-item active">
+		                <a class="nav-link" href="#">Trips</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="#">Profile</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="#">Change Your Role</a>
+		            </li>
+		            <li class="nav-item">
+		                <a id ="logout-btn" class="nav-link">Logout</a>
+		            </li>
+	        </ul>
+	     </div>
+	</nav>
+  </div>	
+
 
 
 </body>

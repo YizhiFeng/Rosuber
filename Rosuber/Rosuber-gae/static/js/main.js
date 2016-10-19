@@ -28,7 +28,7 @@ rh.rb.enableButtons = function() {
    
     $("#logout-btn").click(function() {
     var logoutUrl = $(this).find(".logout-url").html();
-    window.location.replace(logoutUrl);
+    window.location.replace("/rosefire-logout");
   });
   
     
