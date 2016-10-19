@@ -48,6 +48,14 @@ class LoginPage(BaseHandler):
         values = {"login_url":users.create_login_url("/homepage")}
         self.response.out.write(template.render(values))
 
+class ProfilePage(BaseHandler):
+#     def get(self):
+#         template = jinja_env.get_template("templates/profile.html")
+        
+    def get_template(self):
+        return "templates/profile.html"
+    def get_page_title(self):
+        return "Rosuber"
 
 class LoginHandler(BaseHandler):
     def get(self):
@@ -77,4 +85,5 @@ app = webapp2.WSGIApplication([
     ('/homepage', HomePage),
     ('/rosefire-login', LoginHandler),
     ('/rosefire-logout', LogoutHandler),
+    ('/profile', ProfilePage)
 ], config=config, debug=True)

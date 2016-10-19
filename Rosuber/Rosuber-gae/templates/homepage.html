@@ -10,7 +10,7 @@
   <!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"> -->
   
   <!-- Import Fonts -->
-
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 
   <!-- Material Design Lite -->
   <!--link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"-->
@@ -20,6 +20,9 @@
   <!-- Material Design Bootstrap -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css"/>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/js/mdb.min.js"></script>
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
 
 
   <!-- Note many developers load js last. I like to cheat and put little script snippets in my html sometimes,
@@ -28,6 +31,9 @@
   <!-- Bootstrap and jQuery JS -->
   <script src="/static/js/jquery-2.2.3.min.js"></script>
   <script src="/static/js/bootstrap.min.js"></script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/static/css/style.css">
   
   <!-- Custom JS -->
   <script src="/static/js/main.js"></script>
@@ -53,26 +59,32 @@
 		<!--Collapse content-->
         <div class="collapse navbar-toggleable-xs" id="collapseEx2">
        		<div class = "navbar-header">
-        		<a class="navbar-brand" href="#">Navbar</a>
+        		<a class="navbar-brand" href="/homepage">Rosuber</a>
         	</div>
 			<ul class="nav navbar-nav pull-right">
 				
 		            <li class="nav-item active">
-		                <a class="nav-link" href="#">Trips</a>
+		                <a class="nav-link navbar-right" href="/homepage">Trips</a>
 		            </li>
 		            <li class="nav-item">
-		                <a class="nav-link" href="#">Profile</a>
+		                <a class="nav-link" href="/profile">Profile</a>
 		            </li>
+		            <li class="nav-item btn-group">
+	                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose Your Role</a>
+	                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+	                        <a class="dropdown-item">I am a Driver</a>
+	                        <a class="dropdown-item">I am a Passenger</a>
+	                    </div>
+                	</li>
 		            <li class="nav-item">
-		                <a class="nav-link" href="#">Change Your Role</a>
-		            </li>
-		            <li class="nav-item">
-		                <a id ="logout-btn" class="nav-link">Logout</a>
+		                <a id ="logout-btn" class="nav-link pull-right">Logout</a>
 		            </li>
 	        </ul>
 	     </div>
 	</nav>
   </div>	
+  
+  
 
 
 
