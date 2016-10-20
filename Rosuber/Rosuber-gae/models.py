@@ -1,13 +1,28 @@
 from google.appengine.ext import ndb
+from setuptools.ssl_support import is_available
 
 
 
-class MovieQuote(ndb.Model):
-    """ Saves a quote from a movie to the datastore """
+class User(ndb.Model):
+    """ Saves a user to the datastore """
 
-    # Examples of some different property types.
-    quote = ndb.StringProperty()
-    movie = ndb.StringProperty()
-    last_touch_date_time = ndb.DateTimeProperty(auto_now=True)
+    rose_username = ndb.StringProperty()
+    first_name = ndb.StringProperty()
+    last_name = ndb.StringProperty()
+    phone = ndb.StringProperty(default="")
+    email = ndb.StringProperty()
+    trips = ndb.StringProperty(repeated=True)
 
 
+class Trip(ndb.Model):
+    """ Save a trip to the datastore"""
+    
+    driver = ndb.StringProperty()
+    passenger = ndb.StringProperty(repeated=True, default="")
+    origin = ndb.StringProperty()
+    destination = ndb.StringProperty()
+    pick_up_time=ndb.DateTimeProperty()
+    is_available = ndb.BooleanProperty(default=True)
+    price = ndb.StringProperty()
+    capacity = ndb.IntegerProperty()
+    
