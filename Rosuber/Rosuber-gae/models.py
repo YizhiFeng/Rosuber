@@ -1,5 +1,4 @@
 from google.appengine.ext import ndb
-from setuptools.ssl_support import is_available
 
 
 
@@ -11,14 +10,13 @@ class User(ndb.Model):
     last_name = ndb.StringProperty()
     phone = ndb.StringProperty(default="")
     email = ndb.StringProperty()
-    trips = ndb.StringProperty(repeated=True)
 
 
 class Trip(ndb.Model):
     """ Save a trip to the datastore"""
     
-    driver = ndb.StringProperty()
-    passenger = ndb.StringProperty(repeated=True, default="")
+    driver = ndb.KeyProperty()
+    passengers = ndb.KeyProperty(repeated=True, default="")
     origin = ndb.StringProperty()
     destination = ndb.StringProperty()
     pick_up_time=ndb.DateTimeProperty()

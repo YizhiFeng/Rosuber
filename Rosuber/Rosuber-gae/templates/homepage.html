@@ -15,7 +15,7 @@
 
   <!-- Material Design Lite -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.grey-red.min.css" />
+  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.red-blue.min.css" />
   <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 
   <!-- Material Design Bootstrap -->
@@ -45,47 +45,34 @@
   <style>
   body {
   color: white;
-  background-color: #b50939;
+  background-color: #eeeeee;
   font-family: 'Philosopher', sans-serif;
  }
+ 
+
   </style>
   
 </head>
   
 <body>
-	  
-  <div class="container-fluid">
-  	
-	<nav class="navbar navbar-fixed-top scrolling-navbar navbar-dark rgba-grey-light">
-	  
-		<!--Collapse content-->
-        <div class="collapse navbar-toggleable-xs" id="collapseEx2">
-       		<div class = "navbar-header">
-        		<a class="navbar-brand" href="/homepage">Rosuber</a>
-        		
-        	</div>
-			<ul class="nav navbar-nav pull-right">
-				
-		            <li class="nav-item active">
-		                <a class="nav-link navbar-right" href="/homepage">Trips</a>
-		            </li>
-		            <li class="nav-item">
-		                <a class="nav-link" href="/profile">Profile</a>
-		            </li>
-		            <li class="nav-item btn-group">
-	                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Choose Your Role</a>
-	                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-	                        <a class="dropdown-item">I am a Driver</a>
-	                        <a class="dropdown-item">I am a Passenger</a>
-	                    </div>
-                	</li>
-		            <li class="nav-item">
-		                <a id ="logout-btn" class="nav-link pull-right">Logout</a>
-		            </li>
-	        </ul>
-	     </div>
-	</nav>
-  </div>
+
+     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+          <h3>Rosuber</h3>
+        </div>
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+            <a href="/" class="mdl-layout__tab">Home</a>
+            <a href="/homepage" class="mdl-layout__tab active">Trips</a>
+            <a href="/profile" class="mdl-layout__tab">Profile</a>
+            <a id = "logout-btn" class="mdl-layout__tab">Logout</a>
+        </div>
+      </header>
+    </div>
   
   
   <!-- Logout password confirmation dialog -->
