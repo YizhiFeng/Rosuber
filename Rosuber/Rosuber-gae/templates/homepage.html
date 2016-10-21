@@ -34,7 +34,7 @@
   <script src="/static/js/bootstrap.min.js"></script>
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/static/css/style.css">
+  <!--  link rel="stylesheet" href="/static/css/style.css"-->
   
   <!-- Custom JS -->
   <script src="/static/js/main.js"></script>
@@ -42,37 +42,56 @@
   
   
   
-  <style>
-  body {
-  color: white;
-  background-color: #eeeeee;
-  font-family: 'Philosopher', sans-serif;
- }
- 
+<style> 
 
-  </style>
+.demo-layout-transparent {
+background: url('static/image/darkred.jpg') center / cover;
+}
+
+<!-- Uses a transparent header that draws on top of the layout's background -->
+.demo-layout-transparent .mdl-layout__header,
+.demo-layout-transparent .mdl-layout__drawer-button {
+/* This background is dark, so we set text to white. Use 87% black instead if your background is light. */
+color: white;
+}
+
+nav .mdl-button {
+color: white;
+}
+</style>
   
 </head>
   
 <body>
 
-     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-        </div>
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-          <h3>Rosuber</h3>
-        </div>
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-        </div>
-        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-            <a href="/" class="mdl-layout__tab">Home</a>
-            <a href="/homepage" class="mdl-layout__tab active">Trips</a>
-            <a href="/profile" class="mdl-layout__tab">Profile</a>
-            <a id = "logout-btn" class="mdl-layout__tab">Logout</a>
-        </div>
-      </header>
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+  <header class="mdl-layout__header mdl-layout__header--transparent">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">Rosuber</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+      <nav class="mdl-navigation">
+      	<a disabled class="mdl-navigation__link" style="font-family:'Philosopher', sans-serif">{{ user_info.name }}</a>
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="/homepage">Home</a>
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="/profile">Profile</a>
+        <label class="mdl-navigation__link"></label>
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="logout-btn">logout</button>
+      </nav>
     </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Menu</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="">I am a passenger</a>
+      <a class="mdl-navigation__link" href="">I am a driver</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+  {% block content %}{% endblock %}
+  </main>
+</div>
   
   
   <!-- Logout password confirmation dialog -->
@@ -84,7 +103,7 @@
 	</div>
 	<div class="mdl-dialog__actions">
 		<a
-			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  style="background-color: red"
 			id ="signout-btn"> Sign out </a>
 		<button type="button"
 			class="mdl-button mdl-js-button mdl-js-ripple-effect close-logout-confirm-dialog">Cancel</button>

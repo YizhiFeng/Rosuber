@@ -42,7 +42,8 @@ class BaseHandler(Handler):
         raise Exception("No rose user logged in")
     user_info = json.loads(self.session["user_info"])
     email = user_info["email"]
-    values = {"user_email": email,
+    values = {"user_info": user_info,
+              "user_email": email,
               "logout_url": "/rosefire-logout"}
     self.update_values(email, values)  
     self.response.out.write(template.render(values))
