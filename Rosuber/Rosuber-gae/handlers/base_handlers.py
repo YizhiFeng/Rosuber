@@ -43,8 +43,7 @@ class BaseHandler(Handler):
     user_info = json.loads(self.session["user_info"])
     email = user_info["email"]
     values = {"user_info": user_info,
-              "user_email": email,
-              "logout_url": "/rosefire-logout"}
+              "user_email": email}
     self.update_values(email, values)  
     self.response.out.write(template.render(values))
     

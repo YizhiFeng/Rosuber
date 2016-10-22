@@ -2,7 +2,6 @@
 
 body {
   color: white;
-  background-color: #b50939;
 }
 
 .navbar-header .navbar-brand {
@@ -10,3 +9,6 @@ body {
 		font-family: 'Lobster', cursive;
 	}
 
+.profile_content {
+	background-color: grey;
+}

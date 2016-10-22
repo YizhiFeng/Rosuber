@@ -3,5 +3,32 @@
 {% block content %}
 
 <h1>Profile Page</h1>
+<div class="profile_content" style="color: white">
+	
+	<div>
+  		<textarea type="text" rows="1" id="fname" disabled>{{ user_info.name }}</textarea>
+  		<label for="fname">First Name</label>
+	</div><br>
+	<div id="first-name-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+	  <input class="mdl-textfield__input" type="text" name="real_first_name">
+	  <label class="mdl-textfield__label" for="real_first_name">First name</label>
+	</div><br>
+	<div id="last-name-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+	  <input class="mdl-textfield__input" type="text" name="real_last_name">
+	  <label class="mdl-textfield__label" for="real_last_name">Last name</label>
+	</div><br>
+	<div id="phone-number-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+	  <input class="mdl-textfield__input" type="text" name="phone_number">
+	  <label class="mdl-textfield__label" for="phone_number">Phone number</label>
+	</div><br>
+	<div id="email-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+	  <input class="mdl-textfield__input" type="text" name="email">
+	  <label class="mdl-textfield__label" for="email">Email</label>
+	</div><br>
+	<div id="other-info-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+	  <input class="mdl-textfield__input" type="text" name="other_info">
+	  <label class="mdl-textfield__label" for="other_info">Other info</label>
+	</div><br>
+</div>
 
 {% endblock %}
