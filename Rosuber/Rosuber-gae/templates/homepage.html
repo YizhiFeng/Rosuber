@@ -89,17 +89,21 @@ margin:auto;
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">Menu</span>
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link mdl-cell--hide-desktop" href="/homepage">Home</a>
-      <a class="mdl-navigation__link mdl-cell--hide-desktop" href="/profile">Profile</a>
-      <a class="mdl-navigation__link" href="">Request A New Trip</a>
-      <a class="mdl-navigation__link " href="">I am a driver</a>
-      <a class="mdl-navigation__link mdl-cell--hide-desktop" id="logout-btn-link">Logout</a>
+      <a class="mdl-navigation__link mdl-cell--hide-desktop mdl-js-ripple-effect" href="/homepage">Home</a>
+      <a class="mdl-navigation__link mdl-cell--hide-desktop mdl-js-ripple-effect" href="/profile">Profile</a>
+      <a class="mdl-navigation__link" href="" mdl-js-ripple-effect>Request A New Trip</a>
+      <a class="mdl-navigation__link " href="" mdl-js-ripple-effect>I am a driver</a>
+      <a class="mdl-navigation__link mdl-cell--hide-desktop" id="logout-btn-link" mdl-js-ripple-effect>Logout</a>
     </nav>
   </div>
   <main class="mdl-layout__content">
   {% block content %}{% endblock %}
   </main>
 </div>
+  
+  
+  
+  
   
   
   <!-- Logout password confirmation dialog -->

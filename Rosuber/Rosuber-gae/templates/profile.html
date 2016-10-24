@@ -13,7 +13,11 @@
    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
 	<div class="mdl-card mdl-cell mdl-cell--12-col">
       <form class="form-horizontal" action="/account-info-action" method="POST">
-	    <div class="mdl-card__supporting-text">
+	   <div class="mdl-card__supporting-text">
+	    <div id="nickname-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+	  	<input class="mdl-textfield__input" type="text" name="nickname" value="{{ account_info.nickname }}">
+	  	<label class="mdl-textfield__label" for="nickname">Nickname</label>
+		</div><br>
 		<div id="first-name-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 			<input class="mdl-textfield__input" type="text" name="username" value="{{ account_info.rose_username }}" disabled>
 	  		<label class="mdl-textfield__label" for="username">Username</label>
@@ -34,10 +38,7 @@
 	  	<input class="mdl-textfield__input" type="text" name="email" value="{{ account_info.email }}" disabled>
 	  	<label class="mdl-textfield__label" for="email">Email</label>
 		</div><br>
-		<div id="other-info-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-	  	<input class="mdl-textfield__input" type="text" name="other_info">
-	  	<label class="mdl-textfield__label" for="other_info">Other info</label>
-		</div><br>
+		
 	
 	
 		<div class="account-info-form-buttons">
