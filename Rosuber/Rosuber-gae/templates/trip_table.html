@@ -22,9 +22,9 @@
             <a href="/create-message?{% if isEditable %}edit{% else %}duplicate{% endif %}={{ text_message_event.key.urlsafe() }}" class="mdl-button mdl-js-button mdl-button--icon">
               <i class="material-icons">{% if isEditable %}edit{% else %}content_copy{% endif %}</i>
             </a>
-            <button type="button" class="delete-text-message-event-btn mdl-button mdl-js-button mdl-button--icon">
-              <div class="hidden message-body-for-delete">{{ text_message_event.message_body }}</div>
-              <div class="hidden entity-key-for-delete">{{ text_message_event.key.urlsafe() }}</div>
+            <button type="button" class="delete-trip-btn mdl-button mdl-js-button mdl-button--icon">
+              <div class="hidden trip-destination-for-delete">{{ trip.destination }}</div>
+              <div class="hidden entity-key-for-delete">{{ trip.key.urlsafe() }}</div>
               <i class="material-icons">delete</i>
             </button>
           </td>

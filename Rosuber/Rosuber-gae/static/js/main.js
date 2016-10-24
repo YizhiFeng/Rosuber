@@ -26,9 +26,6 @@ rh.rb.enableButtons = function() {
    	});
    });
    
-   $("#logout-btn").click(function() {
-	   document.querySelector('#logout-confirm-dialog').showModal();
-   });
    
     $("#logout-btn-link").click(function() {
 	   document.querySelector('#logout-confirm-dialog').showModal();
@@ -42,7 +39,18 @@ rh.rb.enableButtons = function() {
 	$('.close-logout-confirm-dialog').click(function() {
 		document.querySelector('#logout-confirm-dialog').close();
 	});
- 
+ 	
+ 	$("#request-trip-link").click(function() {
+ 		document.querySelector('#request-trip-dialog').showModal();
+ 	});
+ 	
+ 	$("#driver-btn").click(function() {
+ 		document.querySelector('#request-trip-dialog').close();
+ 	});
+ 	
+ 	$("#passenger-btn").click(function() {
+ 		document.querySelector('#request-trip-dialog').close();
+ 	});
 };
 
 

@@ -61,6 +61,11 @@ class ProfilePage(base_handlers.BaseHandler):
     def get_page_title(self):
         return "Rosuber"
 
+class TripHistoryPage(base_handlers.BaseHandler):
+    def get_template(self):
+        return "templates/trip_history.html"
+    def get_page_title(self):
+        return "Rosuber"
 
 class LoginHandler(base_handlers.BaseHandler):
     def get(self):
@@ -90,6 +95,7 @@ app = webapp2.WSGIApplication([
     ('/', LoginPage),
     ('/homepage', HomePage),
     ('/profile', ProfilePage),
+    ('/trip-history', TripHistoryPage),
     
     #Login/Logout
     ('/rosefire-login', LoginHandler),

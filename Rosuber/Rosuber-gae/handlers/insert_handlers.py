@@ -1,6 +1,10 @@
 import logging
 
+from google.appengine.ext import ndb
+
 from handlers import base_handlers
+from models import Trip
+from utils import trip_utils
 
 
 class AccountInfoAction(base_handlers.BaseAction):
@@ -18,4 +22,10 @@ class AccountInfoAction(base_handlers.BaseAction):
 class InsertTripAction(base_handlers.BaseAction):
     
     def handle_post(self, email, account_info):
-        pass
+        if self.request.get("trip_entity_key"):
+            trip_key = ndb.Key(urlsafe=self.request.get("trip_entity_key"))
+            trip = trip_key.get()
+        else:
+            trip = Trip(parent=trip_utils.get_parent_key_from_account_info(account_info))
+        trip.put()
+        self.redirect("/homepage")

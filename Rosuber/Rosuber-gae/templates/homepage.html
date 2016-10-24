@@ -88,8 +88,9 @@ margin:auto;
     <span class="mdl-layout-title">Menu</span>
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link mdl-cell--hide-desktop" href="/homepage">Home</a>
+      <a class="mdl-navigation__link" href="/trip-history">Trip History</a>
       <a class="mdl-navigation__link mdl-cell--hide-desktop" href="/profile">Profile</a>
-      <a class="mdl-navigation__link" href="">Request A New Trip</a>
+      <a class="mdl-navigation__link" id="request-trip-link">Request/Offer A New Trip</a>
       <a class="mdl-navigation__link" href="">I am a driver</a>
       <a class="mdl-navigation__link mdl-cell--hide-desktop" id="logout-btn-link">Logout</a>
     </nav>
@@ -100,7 +101,22 @@ margin:auto;
 </div>
   
   
-  
+  <dialog id='request-trip-dialog' class="mdl-dialog">
+	<div class="mdl-dialog__content">
+		<h6>
+			Choose Your Role
+		</h6>
+	</div>
+	<div class="mdl-dialog__actions">
+		<a
+			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  style="background-color: red"
+			id ="driver-btn"> I am a Driver </a>
+		<a
+			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  style="background-color: blue"
+			id ="passenger-btn"> I am a Passenger </a>
+	</div>
+	
+	</dialog>
   
   
   
