@@ -5,9 +5,10 @@ from google.appengine.api import users
 import jinja2
 import webapp2
 
-from handlers.base_handlers import BaseHandler
+from handlers import base_handlers
 from rosefire import RosefireTokenVerifier
 import utils
+from handlers import insert_handlers
 
 
 # Jinja environment instance necessary to use Jinja templates.
@@ -23,7 +24,7 @@ def __init_jinja_env():
 jinja_env = __init_jinja_env()
 ROSEFIRE_SECRET = 'omf1cPaSTlhPOTItFIAb'
 
-class HomePage(BaseHandler):
+class HomePage(base_handlers.BaseHandler):
     
 #     def update_values(self, email, values):
 #         # Subclasses should override this method to add additional data for the Jinja template.
@@ -36,10 +37,8 @@ class HomePage(BaseHandler):
         return "Rosuber"
 
 
-class LoginPage(BaseHandler):
+class LoginPage(base_handlers.BaseHandler):
     def get(self):
-        # A basic template could just send text out the response stream, but we use Jinja
-        # self.response.write("Hello world!")
         values = {}
         if "user_info" in self.session:
             self.redirect("/homepage")
@@ -48,7 +47,7 @@ class LoginPage(BaseHandler):
         values = {"login_url":users.create_login_url("/homepage")}
         self.response.out.write(template.render(values))
 
-class ProfilePage(BaseHandler):
+class ProfilePage(base_handlers.BaseHandler):
 #     def get(self):
 #         template = jinja_env.get_template("templates/profile.html")
         
@@ -57,7 +56,7 @@ class ProfilePage(BaseHandler):
     def get_page_title(self):
         return "Rosuber"
 
-class LoginHandler(BaseHandler):
+class LoginHandler(base_handlers.BaseHandler):
     def get(self):
         if "user_info" not in self.session:
             token = self.request.get('token')
@@ -69,7 +68,7 @@ class LoginHandler(BaseHandler):
             self.session["user_info"] = json.dumps(user_info)
         self.redirect(uri="/")
 
-class LogoutHandler(BaseHandler):
+class LogoutHandler(base_handlers.BaseHandler):
     def get(self):
         del self.session["user_info"]
         self.redirect(uri="/")
@@ -81,9 +80,16 @@ config['webapp2_extras.sessions'] = {
 }
 
 app = webapp2.WSGIApplication([
+    #Page
     ('/', LoginPage),
     ('/homepage', HomePage),
+    ('/profile', ProfilePage),
+    
+    #Login/Logout
     ('/rosefire-login', LoginHandler),
     ('/rosefire-logout', LogoutHandler),
-    ('/profile', ProfilePage)
+    
+    
+    #Actions - Insert
+    ('/account-info-action', insert_handlers.AccountInfoAction)
 ], config=config, debug=True)

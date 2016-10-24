@@ -30,6 +30,10 @@ rh.rb.enableButtons = function() {
 	   document.querySelector('#logout-confirm-dialog').showModal();
    });
    
+    $("#logout-btn-link").click(function() {
+	   document.querySelector('#logout-confirm-dialog').showModal();
+   });
+   
     $("#signout-btn").click(function() {
     window.location.replace("/rosefire-logout");
   });

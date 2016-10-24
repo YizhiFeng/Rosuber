@@ -2,7 +2,7 @@ from google.appengine.ext import ndb
 
 
 
-class User(ndb.Model):
+class AccountInfo(ndb.Model):
     """ Saves a user to the datastore """
 
     rose_username = ndb.StringProperty()
@@ -16,7 +16,7 @@ class Trip(ndb.Model):
     """ Save a trip to the datastore"""
     
     driver = ndb.KeyProperty()
-    passengers = ndb.KeyProperty(repeated=True, default="")
+    passengers = ndb.KeyProperty(repeated=True)
     origin = ndb.StringProperty()
     destination = ndb.StringProperty()
     pick_up_time=ndb.DateTimeProperty()

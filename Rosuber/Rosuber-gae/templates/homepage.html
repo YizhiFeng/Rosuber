@@ -78,19 +78,22 @@ margin:auto;
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
       <nav class="mdl-navigation">
-      	<a disabled class="mdl-navigation__link" style="font-family:'Philosopher', sans-serif">{{ user_info.name }}</a>
+      	<a disabled class="mdl-navigation__link" style="font-family:'Philosopher', sans-serif">Welcome! {{ user_info.name }}</a>
         <a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="/homepage">Home</a>
         <a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="/profile">Profile</a>
         <label class="mdl-navigation__link"></label>
-        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="logout-btn">logout</button>
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="logout-btn">Logout</button>
       </nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">Menu</span>
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="">I am a passenger</a>
-      <a class="mdl-navigation__link" href="">I am a driver</a>
+      <a class="mdl-navigation__link mdl-cell--hide-desktop" href="/homepage">Home</a>
+      <a class="mdl-navigation__link mdl-cell--hide-desktop" href="/profile">Profile</a>
+      <a class="mdl-navigation__link" href="">Request A New Trip</a>
+      <a class="mdl-navigation__link " href="">I am a driver</a>
+      <a class="mdl-navigation__link mdl-cell--hide-desktop" id="logout-btn-link">Logout</a>
     </nav>
   </div>
   <main class="mdl-layout__content">
