@@ -48,14 +48,14 @@ class BaseHandler(Handler):
     values = {"user_info": user_info,
               "account_info": account_info,
               "user_email": email}
-    self.update_values(email, values)  
+    self.update_values(account_info, values)  
     self.response.out.write(template.render(values))
     
   def get_page_title(self):
       
       return "Rosuber"
   
-  def update_values(self, user, values):
+  def update_values(self, account_info, values):
     # Subclasses should override this method to add additional data for the Jinja template.
     pass
 

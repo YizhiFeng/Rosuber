@@ -35,7 +35,12 @@ class HomePage(base_handlers.BaseHandler):
 
     def get_page_title(self):
         return "Rosuber"
-
+    
+    def update_values(self, account_info, values):
+#         values["availabe_trip"]
+#         values["trip_history"]
+#         values["trips"]
+        pass
 
 class LoginPage(base_handlers.BaseHandler):
     def get(self):
@@ -55,6 +60,7 @@ class ProfilePage(base_handlers.BaseHandler):
         return "templates/profile.html"
     def get_page_title(self):
         return "Rosuber"
+
 
 class LoginHandler(base_handlers.BaseHandler):
     def get(self):
@@ -91,5 +97,6 @@ app = webapp2.WSGIApplication([
     
     
     #Actions - Insert
-    ('/account-info-action', insert_handlers.AccountInfoAction)
+    ('/account-info-action', insert_handlers.AccountInfoAction),
+    ('/insert-trip-action', insert_handlers.InsertTripAction)
 ], config=config, debug=True)

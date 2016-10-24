@@ -10,7 +10,7 @@ class AccountInfo(ndb.Model):
     last_name = ndb.StringProperty()
     phone = ndb.StringProperty(default="")
     email = ndb.StringProperty()
-    nickname = ndb.StringProperty()
+    nickname = ndb.StringProperty(default="")
 
 
 class Trip(ndb.Model):
