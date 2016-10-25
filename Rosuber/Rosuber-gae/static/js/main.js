@@ -37,6 +37,10 @@ rh.rb.enableButtons = function() {
    	$("#request-trip-link").click(function() {
  		document.querySelector('#request-trip-dialog').showModal();
  	});
+ 	
+ 	$("#add-trip-btn").click(function() {
+ 		document.querySelector('#add-trip-dialog').showModal();
+ 	});
    
     $("#signout-btn").click(function() {
     window.location.replace("/rosefire-logout");
@@ -57,6 +61,10 @@ rh.rb.enableButtons = function() {
  	
  	$("#passenger-btn").click(function() {
  		document.querySelector('#request-trip-dialog').close();
+ 	});
+ 	
+ 	$(".close-add-trip-dialog").click(function() {
+ 		document.querySelector('#add-trip-dialog').close();
  	});
 };
 
