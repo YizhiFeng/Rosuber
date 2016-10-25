@@ -26,10 +26,17 @@ rh.rb.enableButtons = function() {
    	});
    });
    
+    $("#logout-btn").click(function() {
+	   document.querySelector("#logout-confirm-dialog").showModal();
+   });
    
     $("#logout-btn-link").click(function() {
-	   document.querySelector('#logout-confirm-dialog').showModal();
+	   document.querySelector("#logout-confirm-dialog").showModal();
    });
+   
+   	$("#request-trip-link").click(function() {
+ 		document.querySelector('#request-trip-dialog').showModal();
+ 	});
    
     $("#signout-btn").click(function() {
     window.location.replace("/rosefire-logout");
@@ -39,10 +46,10 @@ rh.rb.enableButtons = function() {
 	$('.close-logout-confirm-dialog').click(function() {
 		document.querySelector('#logout-confirm-dialog').close();
 	});
- 	
- 	$("#request-trip-link").click(function() {
- 		document.querySelector('#request-trip-dialog').showModal();
- 	});
+	
+	$('.close-add-trip-dialog').click(function() {
+		document.querySelector('#add-trip-dialog').close();
+	});
  	
  	$("#driver-btn").click(function() {
  		document.querySelector('#request-trip-dialog').close();

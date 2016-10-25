@@ -1,0 +1,38 @@
+{% extends "templates/homepage.html" %}
+
+{% block content %}
+
+
+
+
+  <div class="container fab-width-container">
+    <a class="btn-floating btn-small red darken-2 pull-right">
+      <!-- Raised button with ripple -->
+		<button id="add-trip-btn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="color: black; background-color: white">
+  			Add New Trip
+		</button>
+
+    </a>
+  </div>
+
+
+
+
+<!-- Add trip dialog -->
+	<dialog id='add-trip-dialog' class="mdl-dialog">
+	<div class="mdl-dialog__content">
+		<h6>
+			Are you sure to logout?
+		</h6>
+	</div>
+	<div class="mdl-dialog__actions">
+		<a
+			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  style="background-color: red"
+			id ="signout-btn"> Sign out </a>
+		<button type="button"
+			class="mdl-button mdl-js-button mdl-js-ripple-effect close-add-trip-dialog">Cancel</button>
+	</div>
+	
+	</dialog>
+
+{% endblock %}

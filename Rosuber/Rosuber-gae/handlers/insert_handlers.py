@@ -27,5 +27,11 @@ class InsertTripAction(base_handlers.BaseAction):
             trip = trip_key.get()
         else:
             trip = Trip(parent=trip_utils.get_parent_key_from_account_info(account_info))
+#         trip.driver = self.request.get("")
+#         trip.passengers = 
+#         trip.origin = 
+#         trip.destination =
+#         trip.pick_up_time =
+#         trip.price =
         trip.put()
         self.redirect("/homepage")

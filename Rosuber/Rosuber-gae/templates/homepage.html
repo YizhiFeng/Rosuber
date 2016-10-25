@@ -15,7 +15,7 @@
 
   <!-- Material Design Lite -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.red-blue.min.css" />
+  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.red-yellow.min.css" />
   <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 
 
@@ -76,7 +76,7 @@ color: white;
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
       <nav class="mdl-navigation">
-      	<a disabled class="mdl-navigation__link" style="font-family:'Philosopher', sans-serif">Welcome! 
+      	<a class="mdl-navigation__link" style="font-family:'Philosopher', sans-serif">Welcome! 
       				{% if account_info.nickname %}
       					{{ account_info.nickname }}
       				{% else %}
@@ -114,11 +114,11 @@ color: white;
 	</div>
 	<div class="mdl-dialog__actions">
 		<a
-			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  style="background-color: red"
-			id ="driver-btn"> I am a Driver </a>
+			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  style="background-color: red;color:white"
+			id ="driver-btn" href="/trip"> I am a Driver </a>
 		<a
-			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  style="background-color: blue"
-			id ="passenger-btn"> I am a Passenger </a>
+			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  style="background-color: blue; color:white"
+			id ="passenger-btn" href="/trip"> I am a Passenger </a>
 	</div>
 	
 	</dialog>
@@ -134,7 +134,7 @@ color: white;
 	</div>
 	<div class="mdl-dialog__actions">
 		<a
-			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  style="background-color: red"
+			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  style="background-color: red;color:white"
 			id ="signout-btn"> Sign out </a>
 		<button type="button"
 			class="mdl-button mdl-js-button mdl-js-ripple-effect close-logout-confirm-dialog">Cancel</button>

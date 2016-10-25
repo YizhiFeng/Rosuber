@@ -2,15 +2,24 @@
 
 {% block content %}
 <style>
-	h1{
+	h2{
 		text-align: center;
 		font-family:'Philosopher', sans-serif;
 	}
+	
+	.profile_content{
+		margin:0;
+		height:auto;
+	}
+	
+	#overview {
+		width: 400px;
+	}
 </style>
 
-<h1>Profile Page</h1>
+<h2>Profile Page</h2>
 <div class="profile_content">
-  <div class="mdl-layout__tab-panel is-active" id="overview">
+  <div id="overview">
    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
 	<div class="mdl-card mdl-cell mdl-cell--12-col">
       <form class="form-horizontal" action="/account-info-action" method="POST">
@@ -38,9 +47,7 @@
 		<div id="email-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 	  	<input class="mdl-textfield__input" type="text" name="email" value="{{ account_info.email }}" disabled>
 	  	<label class="mdl-textfield__label" for="email">Email</label>
-		</div><br>
-		
-	
+		</div><br>	
 	
 		<div class="account-info-form-buttons">
             <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Save</button>
