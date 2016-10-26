@@ -18,6 +18,8 @@ rh.rb.createTripInit = function() {
   $('input[name=pick_up_time]').bootstrapMaterialDatePicker({
     format : 'MM-DD-YYYY hh:mm A',
   });
+  
+  $(".scheduled-picker").show();
 };
 
 rh.rb.enableButtons = function() { 
@@ -32,11 +34,7 @@ rh.rb.enableButtons = function() {
    		window.location.replace("/rosefire-login?token="+ rosefireUser.token);
    	});
    });
-   
-   $("input[name=pick_up_time]").click(function() {
-   $(".scheduled-picker").show();
-   });
-   
+ 
     $("#logout-btn").click(function() {
 	   document.querySelector("#logout-confirm-dialog").showModal();
    });
