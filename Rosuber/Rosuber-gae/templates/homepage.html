@@ -15,7 +15,7 @@
 
   <!-- Material Design Lite -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.red-yellow.min.css" />
+  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.red-pink.min.css" />
   <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 
 
@@ -53,7 +53,7 @@ color: white;
 }
 
 main {
-position:absolute;
+
 margin:auto;
 }
 
@@ -95,8 +95,7 @@ color: white;
       <a class="mdl-navigation__link mdl-cell--hide-desktop" href="/homepage">Home</a>
       <a class="mdl-navigation__link" href="/trip-history">Trip History</a>
       <a class="mdl-navigation__link mdl-cell--hide-desktop" href="/profile">Profile</a>
-      <a class="mdl-navigation__link" id="request-trip-link">Request/Offer A New Trip</a>
-      <a class="mdl-navigation__link" href="">I am a driver</a>
+      <a class="mdl-navigation__link" id="find-trip-link">Find Trips</a>
       <a class="mdl-navigation__link mdl-cell--hide-desktop" id="logout-btn-link">Logout</a>
     </nav>
   </div>
@@ -106,7 +105,7 @@ color: white;
 </div>
   
   
-  <dialog id='request-trip-dialog' class="mdl-dialog">
+  <dialog id='find-trip-dialog' class="mdl-dialog">
 	<div class="mdl-dialog__content">
 		<h6>
 			Choose Your Role
@@ -114,11 +113,15 @@ color: white;
 	</div>
 	<div class="mdl-dialog__actions">
 		<a
-			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  style="background-color: red;color:white"
+			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  style="background-color: teal; color:white"
 			id ="driver-btn" href="/trip"> I am a Driver </a>
+		<br><br>
 		<a
-			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  style="background-color: blue; color:white"
+			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  style="background-color: teal; color:white"
 			id ="passenger-btn" href="/trip"> I am a Passenger </a>
+		<br><br>
+		<button type="button"
+			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect close-find-trip-dialog">Cancel</button>
 	</div>
 	
 	</dialog>

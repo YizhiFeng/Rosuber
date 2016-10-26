@@ -34,12 +34,18 @@ rh.rb.enableButtons = function() {
 	   document.querySelector("#logout-confirm-dialog").showModal();
    });
    
-   	$("#request-trip-link").click(function() {
- 		document.querySelector('#request-trip-dialog').showModal();
+   	$("#find-trip-link").click(function() {
+ 		document.querySelector('#find-trip-dialog').showModal();
  	});
  	
  	$("#add-trip-btn").click(function() {
  		document.querySelector('#add-trip-dialog').showModal();
+ 	});
+   
+    $("#delete-trip-btn").click(function() {
+ 		document.querySelector('#delete-trip-dialog').showModal();
+ 		var entity_key = $(this).find(".trip-entity-key-for-delete").html();
+ 		$("input[name=trip_to_delete_key]").val(entity_key)
  	});
    
     $("#signout-btn").click(function() {
@@ -55,17 +61,24 @@ rh.rb.enableButtons = function() {
 		document.querySelector('#add-trip-dialog').close();
 	});
  	
- 	$("#driver-btn").click(function() {
- 		document.querySelector('#request-trip-dialog').close();
+
+ 	$('.close-find-trip-dialog').click(function() {
+		document.querySelector('#find-trip-dialog').close();
+	});
+ 	
+ 	$("#driver-btn").click(function() {		
+ 		document.querySelector('#find-trip-dialog').close();
  	});
  	
  	$("#passenger-btn").click(function() {
- 		document.querySelector('#request-trip-dialog').close();
+ 		document.querySelector('#find-trip-dialog').close();
  	});
  	
- 	$(".close-add-trip-dialog").click(function() {
- 		document.querySelector('#add-trip-dialog').close();
+ 	$(".close-delete-trip-dialog").click(function() {
+ 		document.querySelector('#delete-trip-dialog').close();
  	});
+ 	
+ 	
 };
 
 

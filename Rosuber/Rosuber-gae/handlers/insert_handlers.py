@@ -23,15 +23,21 @@ class InsertTripAction(base_handlers.BaseAction):
     
     def handle_post(self, email, account_info):
         if self.request.get("trip_entity_key"):
-            trip_key = ndb.Key(urlsafe=self.request.get("trip_entity_key"))
-            trip = trip_key.get()
+#             trip_key = ndb.Key()
+            trip = self.request.get("trip_entity_key").get()
         else:
-            trip = Trip(parent=trip_utils.get_parent_key_from_account_info(account_info))
+            trip = Trip(parent=trip_utils.get_parent_key_from_username(account_info.rose_username))
 #         trip.driver = self.request.get("")
 #         trip.passengers = 
-#         trip.origin = 
-#         trip.destination =
-#         trip.pick_up_time =
-#         trip.price =
+        trip.origin = self.request.get("origin")
+        trip.destination = self.request.get("destination")
+#         trip.pick_up_time = self.request.get("pick_up_time")
+        trip.price = self.request.get("price")
+        trip.capacity = int(self.request.get("capacity"))
         trip.put()
-        self.redirect("/homepage")
+        self.redirect("/trip")
+        
+        
+        
+        
+        

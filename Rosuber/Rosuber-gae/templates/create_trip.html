@@ -3,32 +3,72 @@
 {% block content %}
 
 
-
-
-  <div class="container fab-width-container">
+  <div class="containe">
     <a class="btn-floating btn-small red darken-2 pull-right">
       <!-- Raised button with ripple -->
 		<button id="add-trip-btn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="color: black; background-color: white">
   			Add New Trip
 		</button>
-
     </a>
   </div>
 
+<div class="container">
+ <h2 class="page-title">Available Trips</h2>
+  <hr>
+    {% with %}
+      {% set trip_list = trip_list %}
+      {% set title = "Needs a driver" %}
+      {% set isEditable = True %}
+      {% include "templates/trip_table.html" %}
+    {% endwith %}
+    {% with %}
+      {% set trip_list = trip_list %}
+      {% set title = "Looking for more passenger" %}
+      {% set isEditable = True %}
+      {% include "templates/trip_table.html" %}
+    {% endwith %}
+</div>	
 
 
 
 <!-- Add trip dialog -->
 	<dialog id='add-trip-dialog' class="mdl-dialog">
 	<div class="mdl-dialog__content">
-		<h6>
-			Are you sure to logout?
-		</h6>
+		<h6>New Trip</h6>
+			<div class="mdl-card mdl-cell mdl-cell--12-col">
+		      <form class="form-horizontal" action="/insert-trip-action" method="POST">
+		       <input name="trip_entity_key" type="hidden">
+			   <div class="mdl-card__supporting-text">
+			    <div id="origin-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			  	<input class="mdl-textfield__input" type="text" name="origin">
+			  	<label class="mdl-textfield__label" for="origin">Origin</label>
+				</div><br>
+				<div id="destination-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					<input class="mdl-textfield__input" type="text" name="destination">
+			  		<label class="mdl-textfield__label" for="destination">Destination</label>
+				</div><br>
+				<div id="pick-up-time-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			 	 <input class="mdl-textfield__input" type="text" name="pick_up_time">
+			  	 <label class="mdl-textfield__label" for="pick_up_time">Pick Up Time</label>
+				</div><br>
+				<div id="price-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			 	 <input class="mdl-textfield__input" type="text" name="price">
+			  	<label class="mdl-textfield__label" for="price">Price</label>
+				</div><br>
+				<div id="capacity-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			  	<input class="mdl-textfield__input" type="text" name="capacity">
+			  	<label class="mdl-textfield__label" for="capacity">Capacity</label>
+				</div><br>	
+			
+				<div class="add-trip-form-buttons">
+		            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Add</button>
+		        </div>
+		        
+		     </div>
+		    </form>
+		   </div>		
 	</div>
 	<div class="mdl-dialog__actions">
-		<a
-			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  style="background-color: red"
-			id ="add-btn"> Add </a>
 		<button type="button"
 			class="mdl-button mdl-js-button mdl-js-ripple-effect close-add-trip-dialog">Cancel</button>
 	</div>
