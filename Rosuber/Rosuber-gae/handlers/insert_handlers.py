@@ -40,8 +40,9 @@ class InsertTripAction(base_handlers.BaseAction):
 #         trip.passengers = 
         trip.origin = self.request.get("origin")
         trip.destination = self.request.get("destination")
-        trip.pick_up_time = date_utils.get_utc_datetime_from_user_input(account_info.time_zone,
+        pick_up_time= date_utils.get_utc_datetime_from_user_input(account_info.time_zone,
                                                                   self.request.get("pick_up_time"))
+        trip.pick_up_time =pick_up_time
         trip.price = self.request.get("price")
         trip.capacity = int(self.request.get("capacity"))
         trip.put()

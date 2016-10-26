@@ -15,9 +15,8 @@ rh.rb.mdlInitializations = function() {
 
 rh.rb.createTripInit = function() {
 	 // Initialize the date picker widget.
-  $('input[name=send_date_time]').bootstrapMaterialDatePicker({
+  $('input[name=pick_up_time]').bootstrapMaterialDatePicker({
     format : 'MM-DD-YYYY hh:mm A',
-    shortTime : true
   });
 };
 
@@ -34,8 +33,8 @@ rh.rb.enableButtons = function() {
    	});
    });
    
-   $("#pick-up-time-field").click(function() {
-   		$(".scheduled-picker").show();
+   $("input[name=pick_up_time]").click(function() {
+   $(".scheduled-picker").show();
    });
    
     $("#logout-btn").click(function() {
