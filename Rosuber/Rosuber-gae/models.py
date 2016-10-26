@@ -11,6 +11,8 @@ class AccountInfo(ndb.Model):
     phone = ndb.StringProperty(default="")
     email = ndb.StringProperty()
     nickname = ndb.StringProperty(default="")
+    # Time zone to be used when setting the time that the Text Messages will be sent
+    time_zone = ndb.StringProperty(default="US/Eastern")
 
 
 class Trip(ndb.Model):

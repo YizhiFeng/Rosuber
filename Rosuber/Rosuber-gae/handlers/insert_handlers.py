@@ -1,10 +1,11 @@
 import logging
+import user
 
 from google.appengine.ext import ndb
 
 from handlers import base_handlers
 from models import Trip
-from utils import trip_utils
+from utils import trip_utils, date_utils, account_utils
 
 
 class AccountInfoAction(base_handlers.BaseAction):
@@ -27,18 +28,20 @@ class InsertTripAction(base_handlers.BaseAction):
             trip = self.request.get("trip_entity_key").get()
         else:
             trip = Trip(parent=trip_utils.get_parent_key_from_username(account_info.rose_username))
+        
         if self.request.get("role_radio_group") == "driver":
             trip.driver = account_info.key
         elif self.request.get("role_radio_group") == "passenger":
-#             trip.passengers
+            trip.passengers
             pass
         else:
             raise Exception("wrong value")
-        trip.driver = self.request.get("")
+
 #         trip.passengers = 
         trip.origin = self.request.get("origin")
         trip.destination = self.request.get("destination")
-#         trip.pick_up_time = self.request.get("pick_up_time")
+        trip.pick_up_time = date_utils.get_utc_datetime_from_user_input(account_info.time_zone,
+                                                                  self.request.get("pick_up_time"))
         trip.price = self.request.get("price")
         trip.capacity = int(self.request.get("capacity"))
         trip.put()

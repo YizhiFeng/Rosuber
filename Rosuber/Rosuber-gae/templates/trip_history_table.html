@@ -5,6 +5,7 @@
       <tr>
         <th class="trip-origin">Origin</th>
         <th class="trip-destination">Destination</th>
+        <th class="trip-driver">Driver</th>
         <th class="trip-pick-up-time">Pick Up Time</th>
         <th class="trip-price">Price</th>
         <th class="trip-capacity">Capacity</th>
@@ -15,7 +16,8 @@
       {% for trip in trip_list %}
         <tr>
           <td class="trip-origin">{{ trip.origin}}</td>
-          <td class="trip-destination">{{ trip.destination }}</td>       
+          <td class="trip-destination">{{ trip.destination }}</td> 
+          <td class="trip-driver">{% if trip.driver %}{{ trip.driver.get().rose_username }}{% endif %}</td>>      
           <td class="trip-pick-up-time">{{ trip.pick_up_time }}</td>
           <td class="trip-price">{{ trip.price }}</td>
           <td class="trip-capacity">{{ trip.capacity }}</td>
@@ -23,9 +25,8 @@
             <a class="mdl-button mdl-js-button mdl-button--icon">
               <i class="material-icons" style="color:grey">{% if isEditable %}edit{% else %}content_copy{% endif %}</i>
             </a>
-            <button type="button" class="delete-trip-btn mdl-button mdl-js-button mdl-button--icon">
-              <div class="hidden trip-destination-for-delete">{{ trip.destination }}</div>
-              <div class="hidden entity-key-for-delete">{{ trip.key.urlsafe() }}</div>
+            <button id="delete-trip-btn" type="button" class="delete-trip-btn mdl-button mdl-js-button mdl-button--icon">
+              <div class="hidden trip-entity-key-for-delete">{{ trip.key.urlsafe() }}</div>
               <i class="material-icons" style="color:grey">delete</i>
             </button>
           </td>
@@ -34,20 +35,19 @@
     </tbody>
   </table>
   
-  <!-- Delete contact confirmation dialog -->
-<dialog id='delete-contact-dialog' class="mdl-dialog">
+   <!-- Delete contact confirmation dialog -->
+<dialog id='delete-trip-dialog' class="mdl-dialog">
   <h4 class="mdl-dialog__title">Delete Contact</h4>
-  <form action="/delete-contact" method="POST">
-	<input type="hidden" name="contact_to_delete_key">
+  <form action="/delete-trip-action" method="POST">
+	<input type="hidden" name="trip_to_delete_key">
 	<div class="mdl-dialog__content">
 		<p class="delete-modal-body">
-			Are you sure you wish to delete <b><span
-				id="delete-contact-nickname"></span></b>?<br>
+			Are you sure you wish to delete this trip?<br>
 		</p>
 	</div>
 	<div class="mdl-dialog__actions">
-		<button type="submit" class="delete-btn mdl-button mdl-js-button mdl-button--raised">Delete contact</button>
-		<button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent close-parent-dialog">Cancel</button>
+		<button type="submit" class="delete-btn mdl-button mdl-js-button mdl-button--raised">Delete Trip</button>
+		<button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent close-delete-trip-dialog">Cancel</button>
 	</div>
 </form>
 </dialog>

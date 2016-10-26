@@ -13,6 +13,14 @@ rh.rb.mdlInitializations = function() {
   }
 };
 
+rh.rb.createTripInit = function() {
+	 // Initialize the date picker widget.
+  $('input[name=send_date_time]').bootstrapMaterialDatePicker({
+    format : 'MM-DD-YYYY hh:mm A',
+    shortTime : true
+  });
+};
+
 rh.rb.enableButtons = function() { 
    
    $("#login-btn").click(function() {
@@ -24,6 +32,10 @@ rh.rb.enableButtons = function() {
    		}
    		window.location.replace("/rosefire-login?token="+ rosefireUser.token);
    	});
+   });
+   
+   $("#pick-up-time-field").click(function() {
+   		$(".scheduled-picker").show();
    });
    
     $("#logout-btn").click(function() {
@@ -85,4 +97,5 @@ rh.rb.enableButtons = function() {
 $(document).ready(function() {
   rh.rb.mdlInitializations();
   rh.rb.enableButtons();
+  rh.rb.createTripInit();
 });
