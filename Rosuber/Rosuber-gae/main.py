@@ -5,10 +5,12 @@ from google.appengine.api import users
 import jinja2
 import webapp2
 
-from handlers import base_handlers
+from handlers import base_handlers, delete_handlers
+from handlers import insert_handlers
+from models import Trip
 from rosefire import RosefireTokenVerifier
 import utils
-from handlers import insert_handlers
+from utils import trip_utils
 
 
 # Jinja environment instance necessary to use Jinja templates.
@@ -53,8 +55,6 @@ class LoginPage(base_handlers.BaseHandler):
         self.response.out.write(template.render(values))
 
 class ProfilePage(base_handlers.BaseHandler):
-#     def get(self):
-#         template = jinja_env.get_template("templates/profile.html")
         
     def get_template(self):
         return "templates/profile.html"
@@ -68,6 +68,9 @@ class TripHistoryPage(base_handlers.BaseHandler):
         return "Rosuber"
 
 class TripPage(base_handlers.BaseHandler):
+    def update_values(self, account_info, values):
+        values["trip_list"], values["trip_map"]=trip_utils.get_trips_from_account_info(account_info)
+        
     def get_template(self):
         return "templates/create_trip.html"
     def get_page_title(self):
@@ -111,5 +114,8 @@ app = webapp2.WSGIApplication([
     
     #Actions - Insert
     ('/account-info-action', insert_handlers.AccountInfoAction),
-    ('/insert-trip-action', insert_handlers.InsertTripAction)
+    ('/insert-trip-action', insert_handlers.InsertTripAction),
+    
+    #Actions - Delete
+    ('/delete-trip-action', delete_handlers.DeleteTripAction)
 ], config=config, debug=True)

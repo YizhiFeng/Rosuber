@@ -40,9 +40,4 @@ def get_account_info(user_info):
   account_info.last_name = name[1]
   return account_info
 
-
-# def get_account_info_from_sid(account_sid):
-#   """Gets the account info for a given Twilio account sid"""
-# #   return AccountInfo.query(AccountInfo.twilio_sid == account_sid).fetch(1)[0]
-#   return AccountInfo.query(AccountInfo.twilio_sid == account_sid).get()
   

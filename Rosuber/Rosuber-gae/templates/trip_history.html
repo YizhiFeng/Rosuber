@@ -1,32 +1,19 @@
 {% extends "templates/homepage.html" %}
 
 {% block content %}
-<style>
-	h2{
-		text-align: center;
-		font-family:'Philosopher', sans-serif;
-	}
-	
-
-</style>
-
-
 <div class="container">
- <h2 class="page-title">Trip History</h2>
+ <h2 class="page-title">Your Trips</h2>
   <hr>
     {% with %}
-      {% set trip_list =  1%}
+      {% set trip_list = trip_list %}
       {% set title = "When you are a driver" %}
-      {% set isEditable = True %}
-      {% include "templates/trip_table.html" %}
+      {% include "templates/trip_history_table.html" %}
     {% endwith %}
     {% with %}
-      {% set trip_list = 2 %}
+      {% set trip_list = trip_list %}
       {% set title = "When you are a passenger" %}
-      {% set isEditable = True %}
-      {% include "templates/trip_table.html" %}
+      {% include "templates/trip_history_table.html" %}
     {% endwith %}
-</div>	
-
+</div>
 
 {% endblock %}

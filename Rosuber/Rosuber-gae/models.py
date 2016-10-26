@@ -16,12 +16,12 @@ class AccountInfo(ndb.Model):
 class Trip(ndb.Model):
     """ Save a trip to the datastore"""
     
-    driver = ndb.KeyProperty()
-    passengers = ndb.KeyProperty(repeated=True)
-    origin = ndb.StringProperty()
-    destination = ndb.StringProperty()
+    driver = ndb.KeyProperty(kind=AccountInfo)
+    passengers = ndb.KeyProperty(repeated=True, kind=AccountInfo)
+    origin = ndb.StringProperty(default="")
+    destination = ndb.StringProperty(default="")
     pick_up_time=ndb.DateTimeProperty()
     is_available = ndb.BooleanProperty(default=True)
-    price = ndb.StringProperty()
+    price = ndb.StringProperty(default="0")
     capacity = ndb.IntegerProperty()
     
