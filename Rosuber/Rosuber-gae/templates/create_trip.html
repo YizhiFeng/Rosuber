@@ -39,6 +39,21 @@
 		      <form class="form-horizontal" action="/insert-trip-action" method="POST">
 		       <input name="trip_entity_key" type="hidden">
 			   <div class="mdl-card__supporting-text">
+			    <div class="mdl-grid fluid">
+		            <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet mdl-cell--3-col-phone">
+		             <label class="mdl-radio mdl-js-radio" for="driver-radio">
+		                <input type="radio" value="driver" id="driver-radio" name="role_radio_group" class="mdl-radio__button">
+		                <span class="mdl-radio__label">Be a Driver</span>
+		             </label>
+		            </div>
+		            <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--1-col-phone">
+		              <label class="mdl-radio mdl-js-radio" for="passenger-radio">
+		                  <input type="radio" value="passenger" id="passenger-radio" name="role_radio_group" class="mdl-radio__button">
+		                  <span class="mdl-radio__label">Be a passenger</span>
+		              </label>
+		            </div>
+		         </div>
+			    
 			    <div id="origin-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 			  	<input class="mdl-textfield__input" type="text" name="origin">
 			  	<label class="mdl-textfield__label" for="origin">Origin</label>

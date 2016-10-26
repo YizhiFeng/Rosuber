@@ -27,7 +27,14 @@ class InsertTripAction(base_handlers.BaseAction):
             trip = self.request.get("trip_entity_key").get()
         else:
             trip = Trip(parent=trip_utils.get_parent_key_from_username(account_info.rose_username))
-#         trip.driver = self.request.get("")
+        if self.request.get("role_radio_group") == "driver":
+            trip.driver = account_info.key
+        elif self.request.get("role_radio_group") == "passenger":
+#             trip.passengers
+            pass
+        else:
+            raise Exception("wrong value")
+        trip.driver = self.request.get("")
 #         trip.passengers = 
         trip.origin = self.request.get("origin")
         trip.destination = self.request.get("destination")
