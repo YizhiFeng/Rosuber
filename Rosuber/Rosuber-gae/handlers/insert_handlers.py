@@ -31,12 +31,7 @@ class InsertTripAction(base_handlers.BaseAction):
         if self.request.get("role_radio_group") == "driver":
             trip.driver = account_info.key
         elif self.request.get("role_radio_group") == "passenger":
-            if trip.passengers:
                 trip.passengers.append(account_info.key)
-            else:
-                passenger=[]
-                passenger.append(account_info.key)
-                trip.passengers=passenger
             
         else:
             raise Exception("wrong value")

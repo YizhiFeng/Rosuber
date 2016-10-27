@@ -12,8 +12,7 @@ body {
 
 .mdl-data-table {
     table-layout: fixed;
-    left: 50px;
-	width: 80%;
+	width: 100%;
 }
 
 h2 {
@@ -27,4 +26,13 @@ h2 {
 
 .mdl-grid fluid {
 	width: 40%;
+}
+
+.trip-table td,
+.trip-table th {
+  width: 25%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
 }
