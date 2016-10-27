@@ -83,6 +83,7 @@ color: white;
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
       <nav class="mdl-navigation">
+      	<a id="add_new_trip_button" class="hidden mdl-button mdl-js-button mdl-js-ripple-effect" href="/new-trip">Add a new trip</a>
       	<a class="mdl-navigation__link" style="font-family:'Philosopher', sans-serif">Welcome! 
       				{% if account_info.nickname %}
       					{{ account_info.nickname }}
@@ -102,7 +103,7 @@ color: white;
       <a class="mdl-navigation__link mdl-cell--hide-desktop" href="/homepage">Home</a>
       <a class="mdl-navigation__link" href="/trip-history">Trip History</a>
       <a class="mdl-navigation__link mdl-cell--hide-desktop" href="/profile">Profile</a>
-      <a class="mdl-navigation__link" id="find-trip-link">Find Trips</a>
+      <a class="mdl-navigation__link" id="find-trip-link" href="/find-trip">Find Trips</a>
       <a class="mdl-navigation__link mdl-cell--hide-desktop" id="logout-btn-link">Logout</a>
     </nav>
   </div>
@@ -110,28 +111,7 @@ color: white;
   {% block content %}{% endblock %}
   </main>
 </div>
-  
-  
-  <dialog id='find-trip-dialog' class="mdl-dialog">
-	<div class="mdl-dialog__content">
-		<h6>
-			Choose Your Role
-		</h6>
-	</div>
-	<div class="mdl-dialog__actions">
-		<a
-			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  style="background-color: teal; color:white"
-			id ="driver-btn" href="/trip"> I am a Driver </a>
-		<br><br>
-		<a
-			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  style="background-color: teal; color:white"
-			id ="passenger-btn" href="/trip"> I am a Passenger </a>
-		<br><br>
-		<button type="button"
-			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect close-find-trip-dialog">Cancel</button>
-	</div>
-	
-	</dialog>
+
   
   
   

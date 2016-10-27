@@ -73,7 +73,13 @@ class TripPage(base_handlers.BaseHandler):
     def update_values(self, account_info, values):
         values["trip_list"], values["trip_map"]=trip_utils.get_trips_from_account_info(account_info)  
     def get_template(self):
-        return "templates/create_trip.html"
+        return "templates/find_trip.html"
+    def get_page_title(self):
+        return "Rosuber"
+
+class NewTripPage(base_handlers.BaseHandler):
+    def get_template(self):
+        return "templates/new_trip.html"
     def get_page_title(self):
         return "Rosuber"
 
@@ -106,7 +112,8 @@ app = webapp2.WSGIApplication([
     ('/homepage', HomePage),
     ('/profile', ProfilePage),
     ('/trip-history', TripHistoryPage),
-    ('/trip', TripPage),
+    ('/find-trip', TripPage),
+    ('/new-trip', NewTripPage),
     
     #Login/Logout
     ('/rosefire-login', LoginHandler),

@@ -18,7 +18,7 @@ class AccountInfoAction(base_handlers.BaseAction):
         account_info.email = email
         account_info.nickname = self.request.get("nickname")
         account_info.put()
-        self.redirect("/profile")
+        self.redirect("/homepage")
         
 class InsertTripAction(base_handlers.BaseAction):
     
@@ -46,7 +46,7 @@ class InsertTripAction(base_handlers.BaseAction):
         trip.price = self.request.get("price")
         trip.capacity = int(self.request.get("capacity"))
         trip.put()
-        self.redirect("/trip")
+        self.redirect("/find-trip")
         
         
         

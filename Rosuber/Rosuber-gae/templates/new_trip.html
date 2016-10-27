@@ -1,0 +1,63 @@
+{% extends "templates/homepage.html" %}
+{% block content %}
+
+<div class="new_trip_content">
+    <h2 class="page-title">Add A New Trip</h2><hr>
+      <div class="mdl-card mdl-cell mdl-cell--12-col">
+          <form class="form-horizontal" action="/insert-trip-action" method="POST">
+           <input name="trip_entity_key" type="hidden">
+         <div class="mdl-card__supporting-text">
+          <div class="mdl-grid fluid">
+                <div class="mdl-cell mdl-cell--12-col mdl-cell--5-col-tablet mdl-cell--3-col-phone">
+                 <label class="mdl-radio mdl-js-radio" for="driver-radio">
+                    <input type="radio" value="driver" id="driver-radio" name="role_radio_group" class="mdl-radio__button">
+                    <span class="mdl-radio__label">Be a Driver</span>
+                 </label>
+                </div>
+                <div class="mdl-cell mdl-cell--12-col mdl-cell--3-col-tablet mdl-cell--1-col-phone">
+                  <label class="mdl-radio mdl-js-radio" for="passenger-radio">
+                      <input type="radio" value="passenger" id="passenger-radio" name="role_radio_group" class="mdl-radio__button">
+                      <span class="mdl-radio__label">Be a passenger</span>
+                  </label>
+                </div>
+             </div>
+          
+          <div id="origin-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" name="origin">
+          <label class="mdl-textfield__label" for="origin">Origin</label>
+        </div><br>
+        <div id="destination-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" name="destination">
+            <label class="mdl-textfield__label" for="destination">Destination</label>
+        </div><br>
+        
+         <div class="scheduled-picker">
+                <div id="pick-up-time-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" name="pick_up_time">
+                  <label id="pick_up_time_label" class="mdl-textfield__label" for="pick_up_time">Pick Up Time</label>
+                </div>
+             </div> 
+              
+        <div id="price-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+         <input class="mdl-textfield__input" type="text" name="price">
+          <label class="mdl-textfield__label" for="price">Price</label>
+        </div><br>
+        <div id="capacity-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" name="capacity">
+          <label class="mdl-textfield__label" for="capacity">Capacity</label>
+        </div><br>  
+      
+        <div class="add-trip-form-buttons">
+                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Add</button>
+        		<button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect close-add-trip-dialog">Cancel</button>
+        </div> 
+  		
+         </div>
+        </form>
+       </div>   
+  </div>
+  
+
+
+
+{% endblock %}

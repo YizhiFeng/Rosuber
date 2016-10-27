@@ -43,14 +43,6 @@ rh.rb.enableButtons = function() {
 	   document.querySelector("#logout-confirm-dialog").showModal();
    });
    
-   	$("#find-trip-link").click(function() {
- 		document.querySelector('#find-trip-dialog').showModal();
- 	});
- 	
- 	$("#add-trip-btn").click(function() {
- 		document.querySelector('#add-trip-dialog').showModal();
- 	});
-   
     $("#delete-trip-btn").click(function() {
  		document.querySelector('#delete-trip-dialog').showModal();
  		var entity_key = $(this).find(".trip-entity-key-for-delete").html();
@@ -59,7 +51,15 @@ rh.rb.enableButtons = function() {
    
     $("#signout-btn").click(function() {
     window.location.replace("/rosefire-logout");
-  });
+    });
+    
+    $("#add-trip-btn").click(function() {
+    	window.location.replace("/new-trip");
+     });
+    
+    $("#find-trip-link").click(function() {
+        $("#add_new_trip_button").removeClass("hidden");
+      });
     
  // Cancel button on the delete confirmation dialog.
 	$('.close-logout-confirm-dialog').click(function() {
@@ -67,22 +67,9 @@ rh.rb.enableButtons = function() {
 	});
 	
 	$('.close-add-trip-dialog').click(function() {
-		document.querySelector('#add-trip-dialog').close();
+		window.location.replace("/find-trip");
 	});
- 	
 
- 	$('.close-find-trip-dialog').click(function() {
-		document.querySelector('#find-trip-dialog').close();
-	});
- 	
- 	$("#driver-btn").click(function() {		
- 		document.querySelector('#find-trip-dialog').close();
- 	});
- 	
- 	$("#passenger-btn").click(function() {
- 		document.querySelector('#find-trip-dialog').close();
- 	});
- 	
  	$(".close-delete-trip-dialog").click(function() {
  		document.querySelector('#delete-trip-dialog').close();
  	});
