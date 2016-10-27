@@ -7,11 +7,13 @@
     {% with %}
       {% set trip_list = trip_list %}
       {% set title = "When you are a driver" %}
+      {% set isEditable = True %}
       {% include "templates/trip_history_table.html" %}
     {% endwith %}
     {% with %}
       {% set trip_list = trip_list %}
       {% set title = "When you are a passenger" %}
+      {% set isEditable = True %}
       {% include "templates/trip_history_table.html" %}
     {% endwith %}
 </div>
