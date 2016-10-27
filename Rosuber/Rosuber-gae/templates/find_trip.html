@@ -1,4 +1,4 @@
-{% extends "templates/homepage.html" %}
+{% extends "templates/base_page.html" %}
 
 {% block content %}
 
@@ -17,13 +17,13 @@
   </div>
   <hr>
     {% with %}
-      {% set trip_list = trip_list %}
+      {% set trip_list = need_driver_trips %}
       {% set title = "Needs a driver" %}
       {% set isEditable = True %}
       {% include "templates/trip_table.html" %}
     {% endwith %}
     {% with %}
-      {% set trip_list = trip_list %}
+      {% set trip_list = need_passenger_trips %}
       {% set title = "Looking for more passenger" %}
       {% set isEditable = True %}
       {% include "templates/trip_table.html" %}

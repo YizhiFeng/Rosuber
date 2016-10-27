@@ -67,11 +67,14 @@ class TripHistoryPage(base_handlers.BaseHandler):
     def get_page_title(self):
         return "Rosuber"
     def update_values(self, account_info, values):
-        values["trip_list"], values["trip_map"]=trip_utils.get_trips_from_account_info(account_info)
+        values["driver_trip_history"]=trip_utils.get_driver_trips_from_account_info(account_info)
+        values["passenger_trip_history"]=trip_utils.get_passenger_trips_from_account_info(account_info)
 
 class TripPage(base_handlers.BaseHandler):
     def update_values(self, account_info, values):
-        values["trip_list"], values["trip_map"]=trip_utils.get_trips_from_account_info(account_info)  
+        values["need_driver_trips"]=trip_utils.get_need_driver_trip()
+        values["need_passenger_trips"]=trip_utils.get_need_passenger_trip()
+ 
     def get_template(self):
         return "templates/find_trip.html"
     def get_page_title(self):

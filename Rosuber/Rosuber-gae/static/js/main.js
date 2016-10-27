@@ -43,8 +43,8 @@ rh.rb.enableButtons = function() {
 	   document.querySelector("#logout-confirm-dialog").showModal();
    });
    
-    $("#delete-trip-btn").click(function() {
- 		document.querySelector('#delete-trip-dialog').showModal();
+    $(".delete-trip-btn").click(function() {
+ 		document.querySelector("#delete-trip-dialog").showModal();
  		var entity_key = $(this).find(".trip-entity-key-for-delete").html();
  		$("input[name=trip_to_delete_key]").val(entity_key)
  	});
@@ -61,6 +61,14 @@ rh.rb.enableButtons = function() {
         $("#add_new_trip_button").removeClass("hidden");
       });
     
+    $("input[name=role_radio_group]").change(function() {
+ 		if(this.id== "passenger-radio"){
+ 			$("#capacity-field").addClass("hidden");
+ 		}
+ 	});
+    
+    
+    
  // Cancel button on the delete confirmation dialog.
 	$('.close-logout-confirm-dialog').click(function() {
 		document.querySelector('#logout-confirm-dialog').close();
@@ -73,6 +81,8 @@ rh.rb.enableButtons = function() {
  	$(".close-delete-trip-dialog").click(function() {
  		document.querySelector('#delete-trip-dialog').close();
  	});
+ 	
+ 	
  	
  	
 };

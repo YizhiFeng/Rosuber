@@ -24,7 +24,6 @@ class InsertTripAction(base_handlers.BaseAction):
     
     def handle_post(self, email, account_info):
         if self.request.get("trip_entity_key"):
-#             trip_key = ndb.Key()
             trip = self.request.get("trip_entity_key").get()
         else:
             trip = Trip(parent=trip_utils.get_parent_key_from_username(account_info.rose_username))
@@ -32,11 +31,15 @@ class InsertTripAction(base_handlers.BaseAction):
         if self.request.get("role_radio_group") == "driver":
             trip.driver = account_info.key
         elif self.request.get("role_radio_group") == "passenger":
-            trip.passengers
-            pass
+            if trip.passengers:
+                trip.passengers.append(account_info.key)
+            else:
+                passenger=[]
+                passenger.append(account_info.key)
+                trip.passengers=passenger
+            
         else:
             raise Exception("wrong value")
-
 #         trip.passengers = 
         trip.origin = self.request.get("origin")
         trip.destination = self.request.get("destination")
@@ -44,7 +47,11 @@ class InsertTripAction(base_handlers.BaseAction):
                                                                   self.request.get("pick_up_time"))
         trip.pick_up_time =pick_up_time
         trip.price = self.request.get("price")
-        trip.capacity = int(self.request.get("capacity"))
+        if self.request.get("capacity"):
+            trip.capacity_left = int(self.request.get("capacity"))
+        else:
+            trip.capacity_left = 1;
+        
         trip.put()
         self.redirect("/find-trip")
         

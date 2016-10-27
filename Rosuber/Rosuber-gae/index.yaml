@@ -11,6 +11,22 @@ indexes:
 # your application using appcfg.py.
 
 - kind: Trip
+  properties:
+  - name: driver
+  - name: pick_up_time
+
+- kind: Trip
+  properties:
+  - name: passengers
+  - name: driver
+
+- kind: Trip
+  ancestor: yes
+  properties:
+  - name: passengers
+  - name: pick_up_time
+
+- kind: Trip
   ancestor: yes
   properties:
   - name: pick_up_time

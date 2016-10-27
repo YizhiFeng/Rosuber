@@ -25,5 +25,5 @@ class Trip(ndb.Model):
     pick_up_time=ndb.DateTimeProperty()
     is_available = ndb.BooleanProperty(default=True)
     price = ndb.StringProperty(default="0")
-    capacity = ndb.IntegerProperty()
+    capacity_left = ndb.IntegerProperty()
     

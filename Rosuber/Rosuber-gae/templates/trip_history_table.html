@@ -6,9 +6,10 @@
         <th class="trip-origin">Origin</th>
         <th class="trip-destination">Destination</th>
         <th class="trip-driver">Driver</th>
+        <th class="trip-passengers">Passengers</th>
         <th class="trip-pick-up-time">Pick Up Time</th>
         <th class="trip-price">Price Per Passenger ($)</th>
-        <th class="trip-capacity">Capacity</th>
+        <th class="trip-capacity">Seats Left</th>
         <th class="">
       </tr>
     </thead>
@@ -17,15 +18,16 @@
         <tr>
           <td class="trip-origin">{{ trip.origin}}</td>
           <td class="trip-destination">{{ trip.destination }}</td> 
-          <td class="trip-driver">{% if trip.driver %}{{ trip.driver.get().rose_username }}{% endif %}</td>    
+          <td class="trip-driver">{% if trip.driver %}{{ trip.driver.get().rose_username }}{% endif %}</td>  
+          <td class="trip-passengers">{% if trip.passengers %}{{ trip.passengers[0].get().rose_username }}{% endif %}</td>  
           <td class="trip-pick-up-time">{{ trip.pick_up_time|date_time_display_format(account_info.time_zone) }}</td>
           <td class="trip-price">{{ trip.price }}</td>
-          <td class="trip-capacity">{{ trip.capacity }}</td>
+          <td class="trip-capacity">{{ trip.capacity_left }}</td>
           <td class="trip-actions">
             <a class="mdl-button mdl-js-button mdl-button--icon">
               <i class="material-icons" style="color:grey">{% if isEditable %}edit{% else %}content_copy{% endif %}</i>
             </a>
-            <button id="delete-trip-btn" type="button" class="delete-trip-btn mdl-button mdl-js-button mdl-button--icon">
+            <button type="button" class="delete-trip-btn mdl-button mdl-js-button mdl-button--icon">
               <div class="hidden trip-entity-key-for-delete">{{ trip.key.urlsafe() }}</div>
               <i class="material-icons" style="color:grey">delete</i>
             </button>
@@ -36,8 +38,8 @@
   </table>
   
    <!-- Delete contact confirmation dialog -->
-<dialog id='delete-trip-dialog' class="mdl-dialog">
-  <h4 class="mdl-dialog__title">Delete Contact</h4>
+<dialog id="delete-trip-dialog" class="mdl-dialog">
+  <h4 class="mdl-dialog__title">Delete Trip</h4>
   <form action="/delete-trip-action" method="POST">
 	<input type="hidden" name="trip_to_delete_key">
 	<div class="mdl-dialog__content">

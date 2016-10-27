@@ -1,146 +1,29 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <title>Rosuber</title>
-
-  <!-- Font Awesome has a bunch of handy icons that are easy to use (optional) -->
-  <!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"> -->
-  
-  <!-- Import Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
-
-  <!-- Material Design Lite -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.red-pink.min.css" />
-  <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+{% extends "templates/base_page.html" %}
+{% block content %}
 
 
-  <!-- Note many developers load js last. I like to cheat and put little script snippets in my html sometimes,
-       so I load my JS in the header and use the $(document).ready() jQuery approach for any running JS code. -->
-
-  <!-- Bootstrap and jQuery JS -->
-  <script src="/static/js/jquery-2.2.3.min.js"></script>
-  <script src="/static/js/bootstrap.min.js"></script>
-  
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/static/css/style.css">
-  
-  <!-- From for Date time pickers https://github.com/T00rk/bootstrap-material-datetimepicker -->
-  <!-- License: https://github.com/T00rk/bootstrap-material-datetimepicker/blob/gh-pages/LICENSE.md -->
-  <link rel="stylesheet" href="/static/css/bootstrap-material-datetimepicker.css" />
-  <script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
-  <script type="text/javascript" src="/static/js/bootstrap-material-datetimepicker.js"></script>
-  
-  
-  <!-- Custom JS -->
-  <script src="/static/js/main.js"></script>
-  <script src="/static/js/rosefire.js"></script>
-  
-  
-  
-<style> 
-
-.demo-layout-transparent {
-background: url('static/image/darkred.jpg') center / cover;
-}
-
-<!-- Uses a transparent header that draws on top of the layout's background -->
-.demo-layout-transparent .mdl-layout__header,
-.demo-layout-transparent .mdl-layout__drawer-button {
-/* This background is dark, so we set text to white. Use 87% black instead if your background is light. */
-color: white;
-}
-
-nav .mdl-button {
-color: white;
-}
-
-main {
-
-margin:auto;
-}
-
-.material-icons {
-color: white;
-}
-
-
-</style>
-  
-</head>
-  
-<body>
-
-<div class="demo-layout-transparent mdl-layout mdl-js-layout">
-   <h1 id="my_title" style="display: none; color: white;">Rosuber</h1>
-  <header id="my" class="mdl-layout__header mdl-layout__header--transparent">
-    <div class="mdl-layout__header-row">
-      <!-- Title -->
-      <span class="mdl-layout-title">Rosuber</span>
-      <!-- Add spacer, to align navigation to the right -->
-      <div class="mdl-layout-spacer"></div>
-      <!-- Navigation -->
-      <nav class="mdl-navigation">
-      	<a id="add_new_trip_button" class="hidden mdl-button mdl-js-button mdl-js-ripple-effect" href="/new-trip">Add a new trip</a>
-      	<a class="mdl-navigation__link" style="font-family:'Philosopher', sans-serif">Welcome! 
-      				{% if account_info.nickname %}
-      					{{ account_info.nickname }}
-      				{% else %}
-      					{{ user_info.name}}
-      				{% endif %}</a>
-        <a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="/homepage">Home</a>
-        <a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="/profile">Profile</a>
-        <label class="mdl-navigation__link"></label>
-        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="logout-btn">Logout</button>
-      </nav>
-    </div>
-  </header>
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">Menu</span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link mdl-cell--hide-desktop" href="/homepage">Home</a>
-      <a class="mdl-navigation__link" href="/trip-history">Trip History</a>
-      <a class="mdl-navigation__link mdl-cell--hide-desktop" href="/profile">Profile</a>
-      <a class="mdl-navigation__link" id="find-trip-link" href="/find-trip">Find Trips</a>
-      <a class="mdl-navigation__link mdl-cell--hide-desktop" id="logout-btn-link">Logout</a>
-    </nav>
+<div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 512px; position: relative;">
+	  <div class="mdl-card__title">
+	    <h2 class="mdl-card__title-text">Welcome</h2>
+	  </div>
+	  <div class="mdl-card__supporting-text">
+	    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+	    Mauris sagittis pellentesque lacus eleifend lacinia...
+	  </div>
+	  <div class="mdl-card__actions mdl-card--border">
+	    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+	      Get Started
+	    </a>
+	  </div>
+	  <div class="mdl-card__menu">
+	    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+	      <i class="material-icons">share</i>
+	    </button>
   </div>
-  <main class="mdl-layout__content">
-  {% block content %}{% endblock %}
-  
-  </main>
 </div>
 
 
 
 
-  
-  
-  <!-- Logout password confirmation dialog -->
-	<dialog id='logout-confirm-dialog' class="mdl-dialog">
-	<div class="mdl-dialog__content">
-		<h6>
-			Are you sure to logout?
-		</h6>
-	</div>
-	<div class="mdl-dialog__actions">
-		<a
-			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"  style="background-color: red;color:white"
-			id ="signout-btn"> Sign out </a>
-		<button type="button"
-			class="mdl-button mdl-js-button mdl-js-ripple-effect close-logout-confirm-dialog">Cancel</button>
-	</div>
-	
-	</dialog>	
-  
-  
 
-
-
-</body>
-
-</html>
+{% endblock %}
