@@ -35,7 +35,6 @@ class InsertTripAction(base_handlers.BaseAction):
             
         else:
             raise Exception("wrong value")
-#         trip.passengers = 
         trip.origin = self.request.get("origin")
         trip.destination = self.request.get("destination")
         pick_up_time= date_utils.get_utc_datetime_from_user_input(account_info.time_zone,
@@ -50,6 +49,17 @@ class InsertTripAction(base_handlers.BaseAction):
         trip.put()
         self.redirect("/find-trip")
         
+class UpdateTripAction(base_handlers.BaseAction):
+    def handle_post(self, email, account_info):
+        trip = ndb.Key(urlsafe=self.request.get("trip_to_update_key")).get()
+        
+        if trip.driver:
+            trip.passengers.append(account_info.key)
+        if trip.passengers:
+            trip.driver = account_info.key
+        
+        trip.put()
+        self.redirect("/find-trip")
         
         
         
