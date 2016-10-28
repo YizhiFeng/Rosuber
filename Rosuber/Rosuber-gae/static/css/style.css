@@ -36,3 +36,13 @@ h2 {
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
 }
+
+.mdl-card {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.mdl-cell {
+	box-sizing: border-box;
+}
