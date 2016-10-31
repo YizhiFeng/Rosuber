@@ -123,9 +123,10 @@ app = webapp2.WSGIApplication([
     ('/rosefire-logout', LogoutHandler),
     
     
-    #Actions - Insert
+    #Actions - Insert/Edit
     ('/account-info-action', insert_handlers.AccountInfoAction),
     ('/insert-trip-action', insert_handlers.InsertTripAction),
+    ('/update-trip-action', insert_handlers.UpdateTripAction),
     
     #Actions - Delete
     ('/delete-trip-action', delete_handlers.DeleteTripAction)

@@ -29,7 +29,8 @@
           <td class="trip-capacity">{{ trip.capacity_left }}</td>
           <td class="trip-actions">
             <a class="edit-trip-btn mdl-button mdl-js-button mdl-button--icon">
-              <i class="material-icons" style="color:grey">{% if isEditable %}edit{% else %}content_copy{% endif %}</i>
+              <div class="hidden trip-entity-key-for-update">{{ trip.key.urlsafe() }}</div>
+              <i class="material-icons" style="color:grey">{% if isEditable %}add_box{% else %}content_copy{% endif %}</i>
             </a>
           </td>
         </tr>
@@ -37,5 +38,23 @@
     </tbody>
   </table>
   
+
+  <!-- Update Trip confirmation dialog -->
+<dialog id="update-trip-dialog" class="mdl-dialog">
+  <h4 class="mdl-dialog__title">Join Trip</h4>
+  <form action="/update-trip-action" method="POST">
+	<input type="hidden" name="trip_to_update_key">
+	<div class="mdl-dialog__content">
+		<p class="update-modal-body">
+			Are you sure you wish to join this trip?<br>
+		</p>
+	</div>
+	<div class="mdl-dialog__actions">
+		<button type="submit" class="update-btn mdl-button mdl-js-button mdl-button--raised">Join Trip</button>
+		<button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent close-update-trip-dialog">Cancel</button>
+	</div>
+</form>
+</dialog>
+
 
 {% endif %}

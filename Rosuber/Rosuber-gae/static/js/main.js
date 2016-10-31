@@ -49,6 +49,12 @@ rh.rb.enableButtons = function() {
  		$("input[name=trip_to_delete_key]").val(entity_key)
  	});
    
+     $(".edit-trip-btn").click(function() {
+ 		document.querySelector("#update-trip-dialog").showModal();
+ 		var entity_key = $(this).find(".trip-entity-key-for-update").html();
+ 		$("input[name=trip_to_update_key]").val(entity_key)
+ 	});   
+   
     $("#signout-btn").click(function() {
     window.location.replace("/rosefire-logout");
     });
@@ -82,7 +88,9 @@ rh.rb.enableButtons = function() {
  		document.querySelector('#delete-trip-dialog').close();
  	});
  	
- 	
+ 	$(".close-update-trip-dialog").click(function() {
+ 		document.querySelector('#update-trip-dialog').close();
+ 	});
  	
  	
 };
