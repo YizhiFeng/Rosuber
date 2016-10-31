@@ -8,7 +8,7 @@
         <th class="trip-driver">Driver</th>
         <th class="trip-passengers">Passengers</th>
         <th class="trip-pick-up-time">Pick Up Time</th>
-        <th class="trip-price">Price Per Passenger ($)</th>
+        <th class="trip-price">Suggested Price Per Passenger</th>
         <th class="trip-capacity">Seats Left</th>
         <th class="">
       </tr>
@@ -25,7 +25,7 @@
           								{% endfor %}{% endif %}</td>
           
           <td class="trip-pick-up-time">{{ trip.pick_up_time|date_time_display_format(account_info.time_zone) }}</td>
-          <td class="trip-price">{{ trip.price }}</td>
+          <td class="trip-price">$ {{ trip.price }}</td>
           <td class="trip-capacity">{{ trip.capacity_left }}</td>
           <td class="trip-actions">
             <a class="edit-trip-btn mdl-button mdl-js-button mdl-button--icon">

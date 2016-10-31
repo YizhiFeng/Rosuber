@@ -21,7 +21,9 @@ h2 {
 }
 
 .mdl-card__supporting-text {
-	width: 60%;
+	font-weight:bold;
+	width:100%;
+	color:black;
 }
 
 .mdl-grid fluid {
