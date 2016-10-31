@@ -21,6 +21,11 @@ indexes:
   - name: driver
 
 - kind: Trip
+  properties:
+  - name: passengers
+  - name: pick_up_time
+
+- kind: Trip
   ancestor: yes
   properties:
   - name: passengers

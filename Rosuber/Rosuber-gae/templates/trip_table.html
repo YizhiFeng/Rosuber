@@ -16,12 +16,12 @@
     <tbody style="color:black">
       {% for trip in trip_list %}
         <tr>
-          <td class="trip-origin">{{ trip.origin}}</td>
+          <td class="trip-origin">{{ trip.origin }}</td>
           <td class="trip-destination">{{ trip.destination }}</td> 
-          <td class="trip-driver">{% if trip.driver %}{{ trip.driver.get().rose_username }}{% endif %}</td>
+          <td class="trip-driver">{% if trip.driver %}{{ trip.driver.get().first_name}} {{trip.driver.get().last_name}}{% endif %}</td>
           <td class="trip-passengers">{% if trip.passengers %}
           								{% for passenger in trip.passengers %}
-          									{{ passenger.get().rose_username }}
+          									{{ passenger.get().first_name }} {{passenger.get().last_name}}
           								{% endfor %}{% endif %}</td>
           
           <td class="trip-pick-up-time">{{ trip.pick_up_time|date_time_display_format(account_info.time_zone) }}</td>

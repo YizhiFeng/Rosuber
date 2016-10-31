@@ -31,10 +31,10 @@ class InsertTripAction(base_handlers.BaseAction):
         if self.request.get("role_radio_group") == "driver":
             trip.driver = account_info.key
         elif self.request.get("role_radio_group") == "passenger":
-                trip.passengers.append(account_info.key)
-            
+            trip.passengers.append(account_info.key)   
         else:
             raise Exception("wrong value")
+        
         trip.origin = self.request.get("origin")
         trip.destination = self.request.get("destination")
         pick_up_time= date_utils.get_utc_datetime_from_user_input(account_info.time_zone,
@@ -57,7 +57,7 @@ class UpdateTripAction(base_handlers.BaseAction):
             trip.passengers.append(account_info.key)
         if trip.passengers:
             trip.driver = account_info.key
-        
+        trip.capacity_left = trip.capacity_left-1;
         trip.put()
         self.redirect("/find-trip")
         
