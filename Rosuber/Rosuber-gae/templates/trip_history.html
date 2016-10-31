@@ -2,17 +2,17 @@
 
 {% block content %}
 <div class="container">
- <h2 class="page-title">Your Trips</h2>
+ <h2 class="page-title">My Trips</h2>
   <hr>
     {% with %}
       {% set trip_list = driver_trip_history %}
-      {% set title = "When you are a driver" %}
+      {% set title = "When I am a driver" %}
       {% set isEditable = True %}
       {% include "templates/trip_history_table.html" %}
     {% endwith %}
     {% with %}
       {% set trip_list = passenger_trip_history %}
-      {% set title = "When you are a passenger" %}
+      {% set title = "When I am a passenger" %}
       {% set isEditable = True %}
       {% include "templates/trip_history_table.html" %}
     {% endwith %}
