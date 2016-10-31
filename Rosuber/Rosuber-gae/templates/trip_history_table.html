@@ -18,14 +18,25 @@
         <tr>
           <td class="trip-origin">{{ trip.origin}}</td>
           <td class="trip-destination">{{ trip.destination }}</td> 
-          <td class="trip-driver">{% if trip.driver %}{{ trip.driver.get().rose_username }}{% endif %}</td>  
-          <td class="trip-passengers">{% if trip.passengers %}{{ trip.passengers[0].get().rose_username }}{% endif %}</td>  
+          <td class="trip-driver">{% if trip.driver %}
+          							{% if is_driver %}
+          								Me
+          							{% else %}
+          								{{ trip.driver.get().first_name}} {{trip.driver.get().last_name}}
+          							{% endif %}{% endif %}</td>  
+          <td class="trip-passengers">{% if trip.passengers %}
+          								{% if is_passenger %}
+          									Me
+          								{% else %}
+	          								{% for passenger in trip.passengers %}
+	          									{{ passenger.get().first_name }} {{passenger.get().last_name}}
+	          								{% endfor %}{% endif %}{% endif %}</td>  
           <td class="trip-pick-up-time">{{ trip.pick_up_time|date_time_display_format(account_info.time_zone) }}</td>
           <td class="trip-price">$ {{ trip.price }}</td>
           <td class="trip-capacity">{{ trip.capacity_left }}</td>
           <td class="trip-actions">
             <a class="mdl-button mdl-js-button mdl-button--icon">
-              <i class="material-icons" style="color:grey">{% if isEditable %}edit{% else %}content_copy{% endif %}</i>
+              <i class="material-icons" style="color:grey">{% if isEditable %}edit{% elif trip.is_available!=True %}done{% endif %}</i>
             </a>
             <button type="button" class="delete-trip-btn mdl-button mdl-js-button mdl-button--icon">
               <div class="hidden trip-entity-key-for-delete">{{ trip.key.urlsafe() }}</div>

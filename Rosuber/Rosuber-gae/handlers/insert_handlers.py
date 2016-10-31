@@ -58,6 +58,8 @@ class UpdateTripAction(base_handlers.BaseAction):
         if trip.passengers:
             trip.driver = account_info.key
         trip.capacity_left = trip.capacity_left-1;
+        if trip.capacity_left == 0:
+            trip.is_available =False;
         trip.put()
         self.redirect("/find-trip")
         
