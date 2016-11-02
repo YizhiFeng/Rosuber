@@ -49,6 +49,24 @@ rh.rb.enableButtons = function() {
  		$("input[name=trip_to_delete_key]").val(entity_key)
  	});
    
+   $(".edit-trip-btn").click(function() {
+ 		document.querySelector("#update-trip-dialog").showModal();
+ 		var entity_key = $(this).find(".trip-entity-key-for-update").html();
+ 		$("input[name=trip_to_update_key]").val(entity_key)
+ 	});
+   
+   
+    $(".contact-info-btn").click(function(){
+    	document.querySelector("#trip-contact-info-dialog").showModal();
+ 		var entity_key = $(this).find(".trip-entity-key-for-update").html();
+ 		$("input[name=trip_contact_info_key]").val(entity_key)
+ 		var driver_full_name = $(this).find(".trip-driver-full-name").html();
+ 		var driver_phone = $(this).find(".trip-driver-phone").html();
+ 		var driver_email = $(this).find(".trip-driver-email").html();
+ 		$("#driver_full_name").html("Driver: " +driver_full_name)
+ 		$("#driver_phone").html("Phone: "+driver_phone)
+ 		$("#driver_email").html("Email: "+driver_email)
+    });
    
     $("#signout-btn").click(function() {
     window.location.replace("/rosefire-logout");
@@ -85,6 +103,10 @@ rh.rb.enableButtons = function() {
  	
  	$(".close-update-trip-dialog").click(function() {
  		document.querySelector('#update-trip-dialog').close();
+ 	});
+ 	
+ 	$(".close-trip-contact-info-dialog").click(function() {
+ 		document.querySelector('#trip-contact-info-dialog').close();
  	});
  	
  	

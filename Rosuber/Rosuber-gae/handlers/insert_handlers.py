@@ -54,35 +54,38 @@ class UpdateTripAction(base_handlers.BaseAction):
     def handle_post(self, email, account_info):
         trip = ndb.Key(urlsafe=self.request.get("trip_to_update_key")).get()
         update = False
-        repeated_passenger = False;
+        need_driver = False
+        need_passenger = False
         
-        #Check if anyone assign themselves multiple times
-        if trip.driver:
-            if trip.driver != account_info.key:
-                if trip.passengers:
-                    if self.is_passenger(trip.passengers, account_info.key) == False:
-                        trip.passengers.append(account_info.key)
-                        update = True
-                    else:
-                        #do nothing
-                        logging.info("you can't be on the same trip twice")
-                else:
-                    trip.passengers.append(account_info.key)
-            else:
-                logging.info("you cant be the passenger")
-                
-        if trip.passengers:
-            if self.is_passenger(trip.passengers, account_info.key) == False:   
+        if trip.driver == None:
+            need_driver = True
+        if trip.passengers == None or trip.capacity_left!=0:
+            need_passenger = True
+        
+        user_is_passenger = self.is_passenger(trip.passengers, account_info.key)
+        
+        #Trip need driver:
+        if need_driver:
+            if user_is_passenger==False:
                 trip.driver = account_info.key
                 update = True
-            else: 
-                logging.info("you can't be the driver")
+            else:
+                logging.info("You are already a passenger")
+        
+        if need_passenger:
+            if trip.driver == account_info.key:
+                logging.info("You are already a driver")
+            else:
+                logging.info("become a passenger")
+                trip.passengers.append(account_info.key)
+                update = True
                 
         #Check if there is need to update this trip
         if update:
-            trip.capacity_left = trip.capacity_left-1;
-            if trip.capacity_left == 0:
-                trip.is_available =False;
+            if need_passenger:
+                trip.capacity_left = trip.capacity_left-1;
+                if trip.capacity_left == 0:
+                    trip.is_available =False;
             trip.put()
         self.redirect("/find-trip")
         
@@ -90,6 +93,7 @@ class UpdateTripAction(base_handlers.BaseAction):
         for passenger_key in passenger_list:
             if passenger_key == account_info_key:
                 return True
+        
         return False
     
         

@@ -18,10 +18,10 @@
         <tr>
           <td class="trip-origin">{{ trip.origin }}</td>
           <td class="trip-destination">{{ trip.destination }}</td> 
-          <td class="trip-driver">{% if trip.driver %}{{ trip.driver.get().first_name}} {{trip.driver.get().last_name}}{% endif %}</td>
+          <td class="trip-driver">{% if trip.driver %}{{trip.driver.get().last_name}}{% endif %}</td>
           <td class="trip-passengers">{% if trip.passengers %}
           								{% for passenger in trip.passengers %}
-          									{{passenger.get().last_name}}
+          									{{passenger.get().last_name}} <br>
           								{% endfor %}{% endif %}</td>
           
           <td class="trip-pick-up-time">{{ trip.pick_up_time|date_time_display_format(account_info.time_zone) }}</td>
@@ -30,7 +30,7 @@
           <td class="trip-actions">
             <a class="edit-trip-btn mdl-button mdl-js-button mdl-button--icon">
               <div class="hidden trip-entity-key-for-update">{{ trip.key.urlsafe() }}</div>
-              <i class="material-icons" style="color:grey">{% if isEditable %}add_box{% else %}content_copy{% endif %}</i>
+              <i class="material-icons" style="color:grey">add_box</i>
             </a>
           </td>
         </tr>
