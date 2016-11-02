@@ -25,6 +25,7 @@ class InsertTripAction(base_handlers.BaseAction):
     def handle_post(self, email, account_info):
         if self.request.get("trip_entity_key"):
             trip = self.request.get("trip_entity_key").get()
+            trip.capacity_left = int(self.request.get("capacity"))
         else:
             trip = Trip(parent=trip_utils.get_parent_key_from_username(account_info.rose_username))
         
@@ -52,17 +53,44 @@ class InsertTripAction(base_handlers.BaseAction):
 class UpdateTripAction(base_handlers.BaseAction):
     def handle_post(self, email, account_info):
         trip = ndb.Key(urlsafe=self.request.get("trip_to_update_key")).get()
+        update = False
+        repeated_passenger = False;
         
+        #Check if anyone assign themselves multiple times
         if trip.driver:
-            trip.passengers.append(account_info.key)
+            if trip.driver != account_info.key:
+                if trip.passengers:
+                    if self.is_passenger(trip.passengers, account_info.key) == False:
+                        trip.passengers.append(account_info.key)
+                        update = True
+                    else:
+                        #do nothing
+                        logging.info("you can't be on the same trip twice")
+                else:
+                    trip.passengers.append(account_info.key)
+            else:
+                logging.info("you cant be the passenger")
+                
         if trip.passengers:
-            trip.driver = account_info.key
-        trip.capacity_left = trip.capacity_left-1;
-        if trip.capacity_left == 0:
-            trip.is_available =False;
-        trip.put()
+            if self.is_passenger(trip.passengers, account_info.key) == False:   
+                trip.driver = account_info.key
+                update = True
+            else: 
+                logging.info("you can't be the driver")
+                
+        #Check if there is need to update this trip
+        if update:
+            trip.capacity_left = trip.capacity_left-1;
+            if trip.capacity_left == 0:
+                trip.is_available =False;
+            trip.put()
         self.redirect("/find-trip")
         
-        
+    def is_passenger(self,passenger_list, account_info_key):
+        for passenger_key in passenger_list:
+            if passenger_key == account_info_key:
+                return True
+        return False
+    
         
         
