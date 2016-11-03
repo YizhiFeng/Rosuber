@@ -55,7 +55,7 @@ rh.rb.enableButtons = function() {
  		$("input[name=trip_to_update_key]").val(entity_key)
  	});
    
-   
+   //update contact info dialog
     $(".contact-info-btn").click(function(){
     	document.querySelector("#trip-contact-info-dialog").showModal();
  		var entity_key = $(this).find(".trip-entity-key-for-update").html();
