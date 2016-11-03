@@ -25,12 +25,12 @@ indexes:
   properties:
   - name: is_available
   - name: driver
-  - name: pick_up_time
 
 - kind: Trip
   properties:
   - name: is_available
   - name: driver
+  - name: pick_up_time
 
 - kind: Trip
   properties:
