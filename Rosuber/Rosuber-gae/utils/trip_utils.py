@@ -24,7 +24,7 @@ def get_driver_trips_from_account_info(account_info):
 
 def get_passenger_trips_from_account_info(account_info):
     parent_key = get_parent_key(account_info.rose_username)
-    passenger_trips = Trip.query(ancestor=parent_key).filter(Trip.passengers.IN([account_info.key])).order(Trip.passengers, Trip.pick_up_time).fetch()
+    passenger_trips = Trip.query().filter(Trip.passengers.IN([account_info.key])).order(Trip.passengers, Trip.pick_up_time).fetch()
     return passenger_trips
 
 def get_need_driver_trip():

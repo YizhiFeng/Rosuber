@@ -59,13 +59,12 @@ rh.rb.enableButtons = function() {
     $(".contact-info-btn").click(function(){
     	document.querySelector("#trip-contact-info-dialog").showModal();
  		var entity_key = $(this).find(".trip-entity-key-for-update").html();
- 		$("input[name=trip_contact_info_key]").val(entity_key)
- 		var driver_full_name = $(this).find(".trip-driver-full-name").html();
- 		var driver_phone = $(this).find(".trip-driver-phone").html();
- 		var driver_email = $(this).find(".trip-driver-email").html();
- 		$("#driver_full_name").html("Driver: " +driver_full_name)
- 		$("#driver_phone").html("Phone: "+driver_phone)
- 		$("#driver_email").html("Email: "+driver_email)
+ 		$("input[name=trip_contact_info_key]").val(entity_key);
+ 		var driver_contact = $(this).find(".trip-driver-contact").html();
+ 		console.log(driver_contact);
+ 		var passengers_contact = $(this).find(".trip-passengers-contact").html();
+ 		$("#driver_contact").html(driver_contact);
+ 		$("#passengers_contact").html(passengers_contact);
     });
    
     $("#signout-btn").click(function() {

@@ -37,10 +37,20 @@
           <td class="trip-capacity">{{ trip.capacity_left }}</td>
           <td class="trip-actions">
             <button type="button" class="contact-info-btn mdl-button mdl-js-button mdl-button--icon">
-              <div class="hidden trip-driver-full-name">{% if trip.driver %}
-              									{{ trip.driver.get().first_name}} {{ trip.driver.get().last_name}} {% endif %}</div>
-              <div class="hidden trip-driver-phone">{% if trip.driver %}{{ trip.driver.get().phone}}{% endif %}</div>
-              <div class="hidden trip-driver-email">{% if trip.driver %}{{ trip.driver.get().email}}{% endif %}</div>
+            
+              <div class="hidden trip-driver-contact">{% if trip.driver %}
+              									<b>{{ trip.driver.get().first_name}} {{ trip.driver.get().last_name}}</b><br>
+              									 Phone: {{ trip.driver.get().phone}} <br>
+              									 Email: {{ trip.driver.get().email}} <br>
+              									 {% endif %}</div>
+              
+              <div class="hidden trip-passengers-contact">{% if trip.passengers %}
+          								{% for passenger in trip.passengers %}
+          									<i class="material-icons mdl-list__item-icon">person</i> <b>{{passenger.get().first_name}} {{passenger.get().last_name}}</b><br>
+          									Phone: {{passenger.get().phone}} <br>
+          									Email: {{passenger.get().email}} <br>
+          								{% endfor %}{% endif %}</div>
+          														
               <div class="hidden trip-entity-key-for-update">{{ trip.key.urlsafe() }}</div>
               <i class="material-icons" style="color:grey">face</i>
             </button>
@@ -74,7 +84,7 @@
 
 
   <!-- Trip detail dialog -->
-<dialog id="trip-contact-info-dialog" class="mdl-dialog"  style="width: 250px;">
+<dialog id="trip-contact-info-dialog" class="mdl-dialog"  style="width: 300px;">
   <h4 class="mdl-dialog__title">Contact Info</h4>
 	<input type="hidden" name="trip_contact_info_key">
 	
@@ -83,19 +93,16 @@
 		  <li class="mdl-list__item--three-line">
 		    <span class="mdl-list__item-primary-content">
 		    <i class="material-icons mdl-list__item-icon">person</i>
-		    	<b><span id="driver_full_name"></span></b>
-				
-		    	<span class="mdl-list__item-text-body">
-			    	<div id="driver_phone"></div>
-			    	<div id="driver_email"></div>
+		    	<span id="driver_contact" class="mdl-list__item-text-body">
 			    </span>
 			</span>
 		  </li>
 		  <hr>
-		  <li class="mdl-list__item">
+		  <li class="mdl-list__item--three-line">
 		    <span class="mdl-list__item-primary-content">
-		    <i class="material-icons mdl-list__item-icon">person</i>
-		    	Bob Odenkirk
+		    
+		    	<span id="passengers_contact" class="mdl-list__item-text-body">
+			    </span>
 		  </span>
 		  </li>
 		</ul>
