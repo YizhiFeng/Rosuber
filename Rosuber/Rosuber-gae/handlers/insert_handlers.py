@@ -91,14 +91,14 @@ class UpdateTripAction(base_handlers.BaseAction):
                     trip.is_available =False;
             trip.put()
         
-        
-        logging.info(account_info.email)
-        logging.info(account_info.nickname)
-        logging.info(account_info.first_name + account_info.last_name)
-        logging.info(trip.origin)
-        logging.info(trip.destination)
-        logging.info(trip.pick_up_time)
-        logging.info(email)
+#         
+#         logging.info(account_info.email)
+#         logging.info(account_info.nickname)
+#         logging.info(account_info.first_name + account_info.last_name)
+#         logging.info(trip.origin)
+#         logging.info(trip.destination)
+#         logging.info(trip.pick_up_time)
+#         logging.info(email)
         sender_address = "no-reply@wangf-fengy2-rosuber.appspotmail.com"
 #         sender_address = "noreply@rosuber.com"
         logging.info(sender_address)

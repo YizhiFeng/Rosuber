@@ -47,6 +47,7 @@ rh.rb.enableButtons = function() {
  		document.querySelector("#delete-trip-dialog").showModal();
  		var entity_key = $(this).find(".trip-entity-key-for-delete").html();
  		$("input[name=trip_to_delete_key]").val(entity_key)
+ 		
  	});
    
    $(".edit-trip-btn").click(function() {
@@ -107,7 +108,7 @@ rh.rb.enableButtons = function() {
  	$(".close-trip-contact-info-dialog").click(function() {
  		document.querySelector('#trip-contact-info-dialog').close();
  	});
- 	
+
  	
 };
 
