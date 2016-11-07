@@ -1,6 +1,7 @@
 import logging
 import user
 
+from google.appengine.api import mail
 from google.appengine.ext import ndb
 
 from handlers import base_handlers
@@ -48,6 +49,7 @@ class InsertTripAction(base_handlers.BaseAction):
             trip.capacity_left = 1;
         
         trip.put()
+        
         self.redirect("/find-trip")
         
 class UpdateTripAction(base_handlers.BaseAction):
@@ -87,6 +89,38 @@ class UpdateTripAction(base_handlers.BaseAction):
                 if trip.capacity_left == 0:
                     trip.is_available =False;
             trip.put()
+        
+        
+        logging.info(account_info.email)
+        logging.info(account_info.nickname)
+        logging.info(account_info.first_name + account_info.last_name)
+        logging.info(trip.origin)
+        logging.info(trip.destination)
+        logging.info(trip.pick_up_time)
+        logging.info(email)
+        sender_address = "rosuber@wangf-fengy2-rosuber.appspotmail.com"
+        logging.info(sender_address)
+        
+        body = "Hi, NAME! Thanks for choosing Rosuber! You have joined the trip from ORIGIN to DEST on TIME. Please visit www.rosuber.com for more detail of your trip."
+        if account_info.nickname:
+            body.replace("NAME", account_info.nickname)
+        else:
+            body.replace("NAME", account_info.first_name +" " + account_info.last_name)
+        body.replace("ORIGIN", trip.origin)
+        body.replace("DEST", trip.destination)
+        body.replace("TIME", trip.pick_up_time)
+        logging.info(body) 
+          
+        try:
+            message = mail.EmailMessage(sender = sender_address, subject = "Trip Confirmation")
+            message.to = "<" + account_info.email + ">"
+            message.body = body
+            message.send()
+            logging.info("The email sent to " + email)
+        except:
+            logging.error("The email did not send! Avoid the retry")
+        
+        
         self.redirect("/find-trip")
         
     def is_passenger(self,passenger_list, account_info_key):
