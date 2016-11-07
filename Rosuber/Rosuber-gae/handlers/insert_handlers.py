@@ -79,8 +79,9 @@ class UpdateTripAction(base_handlers.BaseAction):
                 logging.info("You are already a driver")
             else:
                 logging.info("become a passenger")
-                trip.passengers.append(account_info.key)
-                update = True
+                if user_is_passenger ==False:
+                    trip.passengers.append(account_info.key)
+                    update = True
                 
         #Check if there is need to update this trip
         if update:
@@ -98,17 +99,18 @@ class UpdateTripAction(base_handlers.BaseAction):
         logging.info(trip.destination)
         logging.info(trip.pick_up_time)
         logging.info(email)
-        sender_address = "rosuber@wangf-fengy2-rosuber.appspotmail.com"
+        sender_address = "no-reply@wangf-fengy2-rosuber.appspotmail.com"
+#         sender_address = "noreply@rosuber.com"
         logging.info(sender_address)
         
         body = "Hi, NAME! Thanks for choosing Rosuber! You have joined the trip from ORIGIN to DEST on TIME. Please visit www.rosuber.com for more detail of your trip."
         if account_info.nickname:
-            body.replace("NAME", account_info.nickname)
+            body=body.replace("NAME", account_info.nickname)
         else:
-            body.replace("NAME", account_info.first_name +" " + account_info.last_name)
-        body.replace("ORIGIN", trip.origin)
-        body.replace("DEST", trip.destination)
-        body.replace("TIME", trip.pick_up_time)
+            body=body.replace("NAME", account_info.first_name +" " + account_info.last_name)
+        body=body.replace("ORIGIN", trip.origin)
+        body=body.replace("DEST", trip.destination)
+        body=body.replace("TIME", date_utils.date_time_display_format(trip.pick_up_time, "US/Eastern"))
         logging.info(body) 
           
         try:
