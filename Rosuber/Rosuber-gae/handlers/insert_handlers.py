@@ -41,13 +41,13 @@ class InsertTripAction(base_handlers.BaseAction):
         trip.destination = self.request.get("destination")
         pick_up_time= date_utils.get_utc_datetime_from_user_input(account_info.time_zone,
                                                                   self.request.get("pick_up_time"))
-        trip.pick_up_time =pick_up_time
+        trip.pick_up_time = pick_up_time
         trip.price = self.request.get("price")
         if self.request.get("capacity"):
             trip.capacity_left = int(self.request.get("capacity"))
         else:
-            trip.capacity_left = 1;
-        
+            trip.capacity_left = 0;
+
         trip.put()
         
         self.redirect("/find-trip")
@@ -61,7 +61,7 @@ class UpdateTripAction(base_handlers.BaseAction):
         
         if trip.driver == None:
             need_driver = True
-        if trip.passengers == None or trip.capacity_left!=0:
+        if trip.passengers == None or trip.capacity_left!=0 or trip.passengers == []:
             need_passenger = True
         
         user_is_passenger = self.is_passenger(trip.passengers, account_info.key)
@@ -71,6 +71,8 @@ class UpdateTripAction(base_handlers.BaseAction):
             if user_is_passenger==False:
                 trip.driver = account_info.key
                 update = True
+                if trip.capacity_left == 0:
+                    trip.is_available = False;
             else:
                 logging.info("You are already a passenger")
         
@@ -117,8 +119,9 @@ class UpdateTripAction(base_handlers.BaseAction):
             message = mail.EmailMessage(sender = sender_address, subject = "Trip Confirmation")
             message.to = "<" + account_info.email + ">"
             message.body = body
-            message.send()
-            logging.info("The email sent to " + email)
+            if update:
+                message.send()
+                logging.info("The email sent to " + email)
         except:
             logging.error("The email did not send! Avoid the retry")
         
