@@ -51,7 +51,7 @@ class LoginPage(base_handlers.BaseHandler):
             self.redirect("/homepage")
             return
         template = jinja_env.get_template("templates/login.html")
-        values = {"login_url":users.create_login_url("/homepage")}
+#         values = {"login_url":users.create_login_url("/homepage")}
         self.response.out.write(template.render(values))
 
 class ProfilePage(base_handlers.BaseHandler):

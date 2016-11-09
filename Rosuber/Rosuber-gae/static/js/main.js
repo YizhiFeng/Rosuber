@@ -66,6 +66,25 @@ rh.rb.enableButtons = function() {
  		var passengers_contact = $(this).find(".trip-passengers-contact").html();
  		$("#driver_contact").html(driver_contact);
  		$("#passengers_contact").html(passengers_contact);
+ 		var price_contact = $(this).find(".trip-price-contact").html();
+ 		var capacity_contact = $(this).find(".trip-capacity-contact").html();
+ 		$("#price_contact").html(price_contact);
+ 		$("#capacity_contact").html(capacity_contact);
+    });
+    
+      $(".contact-info-btn-find-trip").click(function(){
+    	document.querySelector("#trip-contact-info-dialog-find-trip").showModal();
+ 		var entity_key = $(this).find(".trip-entity-key-for-update").html();
+ 		$("input[name=trip_contact_info_key]").val(entity_key);
+ 		var driver_contact = $(this).find(".trip-driver-contact").html();
+ 		console.log(driver_contact);
+ 		var passengers_contact = $(this).find(".trip-passengers-contact").html();
+ 		$("#driver_contact").html(driver_contact);
+ 		$("#passengers_contact").html(passengers_contact);
+ 		var price_contact = $(this).find(".trip-price-contact").html();
+ 		var capacity_contact = $(this).find(".trip-capacity-contact").html();
+ 		$("#price_contact").html(price_contact);
+ 		$("#capacity_contact").html(capacity_contact);
     });
    
     $("#signout-btn").click(function() {
@@ -83,6 +102,12 @@ rh.rb.enableButtons = function() {
     $("input[name=role_radio_group]").change(function() {
  		if(this.id == "passenger-radio"){
  			$("#capacity-field").addClass("hidden");
+ 			$("input[name=capacity]").removeAttr('required');
+ 		}
+ 	});
+ 	$("input[name=role_radio_group]").change(function() {
+ 		if(this.id == "driver-radio"){
+ 			$("#capacity-field").removeClass("hidden");
  		}
  	});
     
@@ -108,7 +133,10 @@ rh.rb.enableButtons = function() {
  	$(".close-trip-contact-info-dialog").click(function() {
  		document.querySelector('#trip-contact-info-dialog').close();
  	});
-
+	
+	$(".close-trip-contact-info-dialog-find-trip").click(function() {
+ 		document.querySelector('#trip-contact-info-dialog-find-trip').close();
+ 	});
  	
 };
 

@@ -5,18 +5,19 @@
 
 <div class="new_trip_content">
     <h2 class="insert-trip-page-title">Add A New Trip</h2><hr>
-      <div class="mdl-card mdl-cell mdl-cell--12-col">
+      <div class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
           <form class="form-horizontal" action="/insert-trip-action" method="POST">
            <input name="trip_entity_key" type="hidden">
          <div class="mdl-card__supporting-text">
           <div class="mdl-grid fluid">
-                <div class="mdl-cell mdl-cell--12-col mdl-cell--5-col-tablet mdl-cell--3-col-phone">
+                <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                  <label class="mdl-radio mdl-js-radio" for="driver-radio">
-                    <input type="radio" value="driver" id="driver-radio" name="role_radio_group" class="mdl-radio__button">
+                    <input type="radio" value="driver" id="driver-radio" name="role_radio_group" class="mdl-radio__button" required>
                     <span class="mdl-radio__label">Be a Driver</span>
                  </label>
                 </div>
-                <div class="mdl-cell mdl-cell--12-col mdl-cell--3-col-tablet mdl-cell--1-col-phone">
+                <br>
+                <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                   <label class="mdl-radio mdl-js-radio" for="passenger-radio">
                       <input type="radio" value="passenger" id="passenger-radio" name="role_radio_group" class="mdl-radio__button">
                       <span class="mdl-radio__label">Be a passenger</span>
@@ -25,27 +26,27 @@
              </div>
           
           <div id="origin-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" type="text" name="origin">
+          <input class="mdl-textfield__input" type="text" name="origin" required>
           <label class="mdl-textfield__label" for="origin">Origin</label>
         </div><br>
         <div id="destination-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" type="text" name="destination">
+          <input class="mdl-textfield__input" type="text" name="destination" required>
             <label class="mdl-textfield__label" for="destination">Destination</label>
         </div><br>
         
          <div class="scheduled-picker">
                 <div id="pick-up-time-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" name="pick_up_time">
+                  <input class="mdl-textfield__input" type="text" name="pick_up_time" required>
                   <label id="pick_up_time_label" class="mdl-textfield__label" for="pick_up_time">Pick Up Time</label>
                 </div>
              </div> 
               
         <div id="price-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-         <input class="mdl-textfield__input" type="text" name="price">
-          <label class="mdl-textfield__label" for="price">Suggested Price Per Passenger($)</label>
+         <input class="mdl-textfield__input" type="text" name="price" required>
+          <label class="mdl-textfield__label" for="price">Suggested Price Per Passenger($ Integer)</label>
         </div><br>
         <div id="capacity-field" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input class="mdl-textfield__input" type="text" name="capacity">
+          <input class="mdl-textfield__input" type="text" name="capacity" required>
           <label class="mdl-textfield__label" for="capacity">Capacity</label>
         </div><br>  
       

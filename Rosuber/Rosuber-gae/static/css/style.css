@@ -13,6 +13,9 @@ body {
 .mdl-data-table {
     table-layout: fixed;
 	width: 100%;
+	boarder-spacing: 2px;
+	border-collapse: collapse;
+	white-space: nowrap;
 }
 
 h2 {
@@ -58,5 +61,57 @@ h2 {
 	width: 300px;
 }
 
+table {
+	display:table;
+}
 
+.trip-table .trip-actions {
+  width: 50px;
+}
 
+.small-screen-trip-detail {
+	display:none;
+}
+
+.contact-info-btn-find-trip {
+		display:none;
+	}
+
+@media (max-width : 767px) {
+	
+	.trip-driver {
+		display: none;
+	}
+	.trip-passengers {
+		display: none;
+	}
+	.trip-price {
+		display: none;
+	}
+	.trip-capacity {
+		display: none;
+	}
+	.mdl-layout__drawer{
+		color:black;
+	}
+	
+	.small-screen-trip-detail {
+		display:block;
+	}
+	
+	.trip-origin {
+		width: 80px;
+	}
+	
+	.trip-destination {
+		width: 85px;
+	}
+	
+	.contact-info-btn-find-trip {
+		display: inline-block;
+	}
+	
+	.mdl-cell--5-col-tablet .mdl-cell--3-col-phone{
+		width: 50px;
+	}
+}

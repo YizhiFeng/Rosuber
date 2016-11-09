@@ -37,14 +37,16 @@
           <td class="trip-capacity">{{ trip.capacity_left }}</td>
           <td class="trip-actions">
             <button type="button" class="contact-info-btn mdl-button mdl-js-button mdl-button--icon">
-            
+              <div class="hidden trip-price-contact"><b>Price per passenger:</b> $ {{ trip.price }}</div>
+              <div class="hidden trip-capacity-contact"><b>Seats left:</b> {{ trip.capacity_left }} <hr></div>
               <div class="hidden trip-driver-contact">{% if trip.driver %}
-              									<b>{{ trip.driver.get().first_name}} {{ trip.driver.get().last_name}}</b><br>
+              									<i class="material-icons mdl-list__item-icon">person</i>
+              									<b>Driver: {{ trip.driver.get().first_name}} {{ trip.driver.get().last_name}}</b><br>
               									 Phone: {{ trip.driver.get().phone}} <br>
-              									 Email: {{ trip.driver.get().email}} <br>
+              									 Email: {{ trip.driver.get().email}} <hr>
               									 {% endif %}</div>
               
-              <div class="hidden trip-passengers-contact">{% if trip.passengers %}
+              <div class="hidden trip-passengers-contact">{% if trip.passengers %}<b>Passenger:</b><br>
           								{% for passenger in trip.passengers %}
           									<i class="material-icons mdl-list__item-icon">person</i> <b>{{passenger.get().first_name}} {{passenger.get().last_name}}</b><br>
           									Phone: {{passenger.get().phone}} <br>
@@ -85,25 +87,31 @@
 
   <!-- Trip detail dialog -->
 <dialog id="trip-contact-info-dialog" class="mdl-dialog"  style="width: 300px;">
-  <h4 class="mdl-dialog__title">Contact Info</h4>
+  <h4 class="mdl-dialog__title">Trip Info</h4>
 	<input type="hidden" name="trip_contact_info_key">
 	
 	<div class="mdl-dialog__content">
 		<ul class="contact-list mdl-list">
-		  <li class="mdl-list__item--three-line">
+		  <li class="small-screen-trip-detail mdl-list__item--two-line">
 		    <span class="mdl-list__item-primary-content">
-		    <i class="material-icons mdl-list__item-icon">person</i>
-		    	<span id="driver_contact" class="mdl-list__item-text-body">
+		    	<span id="price_contact" class="mdl-list__item-text-body">
+			    </span>
+				<br>
+			    <span id="capacity_contact" class="mdl-list__item-text-body">
 			    </span>
 			</span>
 		  </li>
-		  <hr>
-		  <li class="mdl-list__item--three-line">
+	  
+		    <span class="mdl-list__item-primary-content">
+		    	<span id="driver_contact" class="mdl-list__item-text-body">
+			    </span>
+			</span>
+  
 		    <span class="mdl-list__item-primary-content">	    
 		    	<span id="passengers_contact" class="mdl-list__item-text-body">
 			    </span>
 		  </span>
-		  </li>
+		 
 		</ul>
 	</div>
 	<br>

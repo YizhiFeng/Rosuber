@@ -49,6 +49,7 @@ class InsertTripAction(base_handlers.BaseAction):
             trip.capacity_left = 0;
 
         trip.put()
+        trip_utils.send_email(email, account_info, trip.origin, trip.destination, trip.pick_up_time, False, False, True)
         
         self.redirect("/find-trip")
         
@@ -58,6 +59,11 @@ class UpdateTripAction(base_handlers.BaseAction):
         update = False
         need_driver = False
         need_passenger = False
+        account_info_key = account_info.key
+        trip_origin = trip.origin
+        trip_destination = trip.destination
+        trip_time = trip.pick_up_time
+        
         
         if trip.driver == None:
             need_driver = True
@@ -91,40 +97,16 @@ class UpdateTripAction(base_handlers.BaseAction):
                 trip.capacity_left = trip.capacity_left-1;
                 if trip.capacity_left == 0:
                     trip.is_available =False;
+            if need_driver:
+                trip_utils.send_email(email, account_info, trip_origin, trip_destination, trip_time, False, False,False)
+            else:
+                trip_utils.send_email(trip.driver.get().email, trip.driver.get(), trip_origin, trip_destination, trip_time, True, False,False)
+            for p in trip.passengers:
+                if p == account_info_key:
+                    trip_utils.send_email(email, account_info, trip_origin, trip_destination, trip_time, False, False, False)
+                else:
+                    trip_utils.send_email(p.get().email, p.get(), trip_origin, trip_destination, trip_time, True, False, False)
             trip.put()
-        
-#         
-#         logging.info(account_info.email)
-#         logging.info(account_info.nickname)
-#         logging.info(account_info.first_name + account_info.last_name)
-#         logging.info(trip.origin)
-#         logging.info(trip.destination)
-#         logging.info(trip.pick_up_time)
-#         logging.info(email)
-        sender_address = "no-reply@wangf-fengy2-rosuber.appspotmail.com"
-#         sender_address = "noreply@rosuber.com"
-        logging.info(sender_address)
-        
-        body = "Hi, NAME! Thanks for choosing Rosuber! You have joined the trip from ORIGIN to DEST on TIME. Please visit www.rosuber.com for more detail of your trip."
-        if account_info.nickname:
-            body=body.replace("NAME", account_info.nickname)
-        else:
-            body=body.replace("NAME", account_info.first_name +" " + account_info.last_name)
-        body=body.replace("ORIGIN", trip.origin)
-        body=body.replace("DEST", trip.destination)
-        body=body.replace("TIME", date_utils.date_time_display_format(trip.pick_up_time, "US/Eastern"))
-        logging.info(body) 
-          
-        try:
-            message = mail.EmailMessage(sender = sender_address, subject = "Trip Confirmation")
-            message.to = "<" + account_info.email + ">"
-            message.body = body
-            if update:
-                message.send()
-                logging.info("The email sent to " + email)
-        except:
-            logging.error("The email did not send! Avoid the retry")
-        
         
         self.redirect("/find-trip")
         
